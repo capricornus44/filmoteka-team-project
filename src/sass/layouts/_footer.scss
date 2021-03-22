@@ -1,0 +1,32 @@
+footer .container {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-text {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.142;
+  color: #545454;
+  background-color: #f7f7f7;
+  width: 320px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.footer-bot-text {
+  margin-top: 10px;
+}
+
+.footer-bot-text > :not(:last-child) {
+  margin-right: 10px;
+}
+
+.footer-svg {
+  width: 14px;
+  height: 13px;
+}
