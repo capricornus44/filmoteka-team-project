@@ -1,6 +1,12 @@
 const API_KEY = '989c90c59500ad26e3fa4e26d53d2bd3';
 const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
+// export const GENRES = [
+//   // {
+//   //   id: 28,
+//   //   name: 'Action',
+//   // },
+// ];
 // const SEARCH_URL = `${BASE_URL}/search/movie?api_key=${API_KEY}&query="&page=1`;
 // const TREND_URL = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&page=1`;
 // const MOVIE_URL = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`;
@@ -16,6 +22,7 @@ export default class ApiService {
 
     this.searchMovies = `${BASE_URL}/search/movie`;
     this.trendMovies = `${BASE_URL}/trending/movie/day`;
+    this.genres = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
 
     // this.movie = `${BASE_URL}/movie/${movieId}`;
   }
@@ -31,14 +38,24 @@ export default class ApiService {
       const response = await fetch(this.url);
       const data = await response.json(); // Получаем объект c полем results: [{}, {}, ..., {}]
 
-      //   const movieIdArr = await data.results.map(el => el.id); // Спросить за ключевое слово
-
       this.totalPages = data.total_pages;
       this.totalResults = data.total_results;
 
       this.page = data.page;
 
       this.url = '';
+
+      // data.results = data.results.map(movie => {
+      //   return {
+      //     ...movie,
+      //     genres: movie.genres_ids
+      //       .map(id => {
+      //         const movieGenre = GENRES.find(genre => genre.id === id);
+      //         return movieGenre?.name || '';
+      //       })
+      //       .join(', '),
+      //   };
+      // });
 
       return data.results;
     } catch (error) {
