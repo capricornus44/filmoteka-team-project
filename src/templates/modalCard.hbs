@@ -1,4 +1,4 @@
-<div class="backdrop is-hidden">
+{{!-- <div class="backdrop is-hidden">
   <div class="modal">
     <button type="button" class="close_btn">
 
@@ -26,8 +26,10 @@
         <li class="modal_list_item">
           <p class="modal_item_title">Genre</p>
           <ul class="item_data">
-            {{#each genre_ids}}
-            <li><p>{{this}}</p></li>
+            {{#each genres}}
+            <li>
+              <p>{{this.name}}</p>
+            </li>
             {{/each}}
           </ul>
         </li>
@@ -39,5 +41,46 @@
       <button class="btn">add to Watched</button>
       <button class="btn">add to queue</button>
     </div>
+  </div>
+</div> --}}
+
+<div class="modal">
+  <div class="modal_poster">
+    <img width="240px" height="356px" class="modal_img" src="https://image.tmdb.org/t/p/w500{{poster_path}}"
+      alt="{{original_title}}" />
+  </div>
+  <div class="modal_desc">
+    <h2 class="title_modal">{{title}}</h2>
+    <ul class="modal_list">
+      <li class="modal_list_item">
+        <p class="modal_item_title">Vote / Votes</p>
+        <span class="item_data vote_averege">{{vote_average}}</span>
+        / <span class="item_data vote_count">{{vote_count}}</span>
+      </li>
+      <li class="modal_list_item">
+        <p class="modal_item_title">Popularity</p>
+        <span class="item_data">{{popularity}}</span>
+      </li>
+      <li class="modal_list_item">
+        <p class="modal_item_title">Original Title</p>
+        <span class="item_data">{{original_title}}</span>
+      </li>
+      <li class="modal_list_item">
+        <p class="modal_item_title">Genre</p>
+        <ul class="item_data">
+          {{#each genres}}
+          <li>
+            <p>{{this.name}}</p>
+          </li>
+          {{/each}}
+        </ul>
+      </li>
+    </ul>
+    <h3 class="about_title" id="modalAbout">About</h3>
+    <p class="overview">{{overview}}</p>
+  </div>
+  <div class="btn_items">
+    <button class="btn">add to Watched</button>
+    <button class="btn">add to queue</button>
   </div>
 </div>
