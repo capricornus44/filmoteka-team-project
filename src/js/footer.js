@@ -1,8 +1,9 @@
 import footerTpl from '../templates/footer.hbs';
+import refs from './references';
 
-const footer = document.querySelector('footer .container');
+// const footer = document.querySelector('footer .container');
 
-function footerMkp() {
-    footer.insertAdjacentHTML('beforeend', footerTpl());
-}    
-footerMkp();
+export default function footerMkp() {
+  refs.footer.insertAdjacentHTML('beforeend', footerTpl());
+}
+// footerMkp();

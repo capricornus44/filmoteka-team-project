@@ -3,4 +3,5 @@ export default {
   myLibraryFilmography: document.querySelector('#library-gallery'),
   errorRequest: document.querySelector('#requst-error'),
   gallery: document.querySelector('#content-js'),
+  footer: document.querySelector('footer'),
 };
