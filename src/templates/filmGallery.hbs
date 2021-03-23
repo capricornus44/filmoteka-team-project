@@ -1,6 +1,6 @@
 <ul class="list list-galery">
   {{#each this}}
-  <li class="card">
+  <li class="card" data-id={{id}}>
     <img src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt="image" class="card-picture" />
     <h2 class="card-title">{{original_title}}</h2>
     <div class="description-box">

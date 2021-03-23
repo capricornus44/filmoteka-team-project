@@ -1,7 +1,8 @@
 import cardMurkup from '../templates/filmGallery.hbs';
 
-import ApiService from './servise/api';
+import ApiService, { genres } from './servise/api';
 import refs from './references';
+// import { genres } from './servise/api';
 
 // refs.form.addEventListener('submit', onSearch);
 // refs.homeFilmography.addEventListener('click', onCardClick);
@@ -15,7 +16,9 @@ const apiService = new ApiService();
 // renderMarkup(data);
 
 export default async function startPage() {
+  // await fetch genres()
   fetchFilmography();
+
   //   return apiService
   //     .fetch()
   //     .then(movies => {
