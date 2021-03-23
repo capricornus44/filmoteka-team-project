@@ -1,0 +1,34 @@
+.footer-modal {
+  width: 320px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -20px;
+  margin-top: -20px;
+
+  @include for-size(tablet) {
+    width: 768px;
+  }
+  @include for-size(desktop) {
+    width: 1024px;
+  }
+}
+
+.student {
+  height: 400px;
+  margin-left: 20px;
+  margin-top: 20px;
+  flex-basis: calc(100% / 1 - 20px);
+  border: 4px solid aquamarine;
+  border-radius: 10%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url(/images/bcg-lbr-mob.jpg);
+  background-size: cover;
+
+  @include for-size(tablet) {
+    flex-basis: calc(100% / 2 - 20px);
+  }
+
+  @include for-size(desktop) {
+    flex-basis: calc(100% / 3 - 20px);
+  }
+}

@@ -6,3 +6,5 @@ import './js/modal';
 import './js/header';
 import './js/footer';
 import './js/servise/render';
+
+import './js/footerModal'
