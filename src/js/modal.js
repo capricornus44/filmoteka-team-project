@@ -26,3 +26,4 @@ function onOpenModal(event) {
     .fetchMovieById(movieId)
     .then(movie => basicLightbox.create(modalCardTpl(movie)).show());
 }
+
