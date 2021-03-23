@@ -9,8 +9,10 @@
     width: 480px;
   }
 
-  @include for-size(tablet) {
+  @include for-size(tablet-only) {
     width: 768px;
+    padding-left: 75px;
+    padding-right: 75px;
   }
   @include for-size(desktop) {
     width: 1200px;
