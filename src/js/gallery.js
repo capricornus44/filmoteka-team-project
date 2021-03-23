@@ -2,23 +2,15 @@ import cardMurkup from '../templates/filmGallery.hbs';
 
 import ApiService, { genres } from './servise/api';
 import refs from './references';
-// import { genres } from './servise/api';
 
 // refs.form.addEventListener('submit', onSearch);
-// refs.homeFilmography.addEventListener('click', onCardClick);
 
 const apiService = new ApiService();
 
 export default async function startPage() {
-  // await fetch genres()
-  fetchFilmography();
+  await apiService.fetchGenre();
 
-  //   return apiService
-  //     .fetch()
-  //     .then(movies => {
-  //       printFilmography(movies);
-  //     })
-  //     .catch(console.log);
+  fetchFilmography();
 }
 
 // ============================= Filmography rendering by request =============================
