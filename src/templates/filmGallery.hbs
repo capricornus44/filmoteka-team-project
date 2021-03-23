@@ -1,16 +1,15 @@
 <ul class="list list-galery">
-   {{#each this}}
-      <li class="card">
-        <img src="{{backdrop_path}}" alt="image" class="card-pictur"/>
-        <h2 class="card-title">{{original_title}}</h2>
-        <div class="description-box">
-            {{#each genre_ids}}
-          <p class="description">{{this}}</p>
-          {{/each}}
-          <span class="release_date">{{release_date}}</span>
-          <span class="rating">{{vote_average}}</span>
-        </div>
-      </li>
-   {{/each}}
-    </ul>
-
+  {{#each this}}
+  <li class="card">
+    <img src={{poster_path}} alt="image" class="card-picture" />
+    <h2 class="card-title">{{original_title}}</h2>
+    <div class="description-box">
+      {{#each genre_ids}}
+      <p class="description">{{this}}</p>
+      {{/each}}
+      <span class="release_date">{{release_date}}</span>
+      <span class="rating">{{vote_average}}</span>
+    </div>
+  </li>
+  {{/each}}
+</ul>

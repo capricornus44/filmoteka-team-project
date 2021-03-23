@@ -1,3 +1,3 @@
-import '../gallery';
-// ============================= Home page with trending movies =============================
+import startPage from '../gallery';
+
 startPage();

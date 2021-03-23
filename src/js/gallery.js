@@ -14,7 +14,7 @@ const apiService = new ApiService();
 
 // renderMarkup(data);
 
-async function startPage() {
+export default async function startPage() {
   fetchFilmography();
   //   return apiService
   //     .fetch()
@@ -54,6 +54,6 @@ function clearFilmography() {
   refs.gallery.innerHTML = '';
 }
 
-function printFilmography() {
+function printFilmography(movies) {
   refs.gallery.insertAdjacentHTML('beforeend', cardMurkup(movies));
 }
