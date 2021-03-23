@@ -6,8 +6,8 @@
         <h1 class="header-logo-name">Filmoteka</h1>
     </div>
     <div class="header-nav-form">
-        <div>Home</div>
-        <div>my library</div>
+        <button id='home' class='lbr-button'>Home</button>
+        <button id='my-library' class='lbr-button'>my library</button>
     </div>
     <div>
         <form id="header-search-form" action="">
@@ -15,7 +15,11 @@
             <svg class="search-icon">
                 <use href="{{this}}#search-2"></use>
             </svg>
-
         </form>
     </div>
+    <div id='lbr-buttons' class='header-lbr-buttons is-hidden'>
+        <button id='watched' class='lbr-button'>Watched</button>
+        <button id='queue' class='lbr-button'>queue</button>
+    </div>
+
 </div>
