@@ -4,7 +4,7 @@ export default {
   headerBlock: document.querySelector('header'),
 
   // galery
-  form: document.querySelector('#search-form'),
+  form: document.querySelector('#header-search-form'),
   myLibraryFilmography: document.querySelector('#library-gallery'),
   errorRequest: document.querySelector('#requst-error'),
   gallery: document.querySelector('#content-js'),
