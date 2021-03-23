@@ -9,12 +9,6 @@ import refs from './references';
 
 const apiService = new ApiService();
 
-// function renderMarkup() {
-//   refs.gallery.insertAdjacentHTML('beforeend', cardMurkup());
-// }
-
-// renderMarkup(data);
-
 export default async function startPage() {
   // await fetch genres()
   fetchFilmography();
