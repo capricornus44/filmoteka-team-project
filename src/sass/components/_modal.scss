@@ -1,44 +1,88 @@
-.backdrop {
-  background: rgba(0, 0, 0, 0.25);
+// .backdrop {
+//   background: rgba(0, 0, 0, 0.25);
 
-  overflow: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+//   overflow: auto;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding-top: 20px;
+//   padding-bottom: 20px;
+// }
 
 .modal {
-  position: relative;
   max-width: 280px;
-  min-height: 900px;
+  height: 100vh;
+  overflow: scroll;
+
+  margin-top: 80px;
+  margin-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 48px;
+  padding-top: 20px;
   padding-bottom: 40px;
+
   background-color: #fff;
+
+  @include for-size(tablet) {
+    max-width: 618px;
+    height: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    overflow: auto;
+  }
+
+  @include for-size(desktop) {
+    max-width: 882px;
+    margin-bottom: 100px;
+    // overflow: hidden;
+  }
 }
 
-.close_btn {
-  position: absolute;
-  top: 18px;
-  right: 18px;
-  margin-bottom: 16px;
-  width: 20px;
-  height: 20px;
-}
+// .close_btn {
+//   position: absolute;
+//   top: 18px;
+//   right: 18px;
+//   margin-bottom: 16px;
+//   width: 20px;
+//   height: 20px;
+// }
 
-.modal_svg {
-  width: 14px;
-  height: 14px;
-  fill: black;
+// .modal_svg {
+//   width: 14px;
+//   height: 14px;
+//   fill: black;
+// }
+
+.modal_poster {
+  @include for-size(tablet) {
+    margin-right: 32px;
+  }
+
+  @include for-size(desktop) {
+    margin-right: 30px;
+  }
 }
 
 .modal_img {
-  background-color: rgb(160, 160, 251);
   border-radius: 5px;
   margin-bottom: 30px;
+  max-width: 240px;
+
+  @include for-size(tablet) {
+    max-width: 264px;
+    max-height: 373px;
+
+    margin-bottom: 0px;
+  }
+
+  @include for-size(desktop) {
+    max-width: 396px;
+    max-height: 480px;
+  }
 }
 
 .title_modal {
@@ -46,6 +90,11 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.15;
+  margin-bottom: 20px;
+  @include for-size(desktop) {
+    font-size: 30px;
+    line-height: 1.16;
+  }
 }
 
 ul {
@@ -68,7 +117,10 @@ ul {
 
   display: inline-block;
   width: 80px;
-  margin-right: 40px;
+  margin-right: 20px;
+  @include for-size(desktop) {
+    margin-right: 85px;
+  }
 }
 
 .item_data {
@@ -104,6 +156,7 @@ ul {
   font-size: 12px;
   line-height: 1.33;
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .overview {
@@ -115,7 +168,10 @@ ul {
 
 .btn_items {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  @include for-size(desktop) {
+    display: inline-block;
+  }
 }
 
 .btn_items > .btn {
