@@ -22,7 +22,12 @@ function onOpenModal(event) {
     movieId = event.target.closest('li').dataset.id;
   }
 
-  apiService
-    .fetchMovieById(movieId)
-    .then(movie => basicLightbox.create(modalCardTpl(movie)).show());
+  apiService.fetchMovieById(movieId).then(movie =>
+    basicLightbox
+      .create(modalCardTpl(movie), {
+        onClose: () => document.body.removeAttribute('style'),
+      })
+      .show(),
+  );
+  document.body.setAttribute('style', 'overflow:hidden');
 }
