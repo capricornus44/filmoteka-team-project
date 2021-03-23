@@ -1,0 +1,19 @@
+.btn-base {
+  width: 136px;
+  height: 44px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: transparent;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: $header-text-color;
+  text-transform: uppercase;
+}
+
+.btn-is-active {
+  border: none;
+  background-color: $active-btn-color;
+}

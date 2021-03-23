@@ -1,9 +1,6 @@
 import cardMurkup from '../templates/filmGallery.hbs';
-
 import ApiService, { genres } from './servise/api';
 import refs from './references';
-
-// refs.form.addEventListener('submit', onSearch);
 
 const apiService = new ApiService();
 
@@ -32,6 +29,8 @@ function onSearch(event) {
   apiService.resetPage();
 
   fetchFilmography();
+
+  printFilmography(movies);
 }
 
 async function fetchFilmography() {
