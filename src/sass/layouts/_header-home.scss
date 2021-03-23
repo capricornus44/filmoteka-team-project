@@ -1,0 +1,51 @@
+header {
+  background-color: rgba(0, 0, 0, 0.56);
+  // background-image:
+  //linear-gradient(rgba(0, 0, 0, 0.56)),
+  //  linear-gradient(rgba(0, 0, 0, 0.56)),
+  // url(../images/bcg-mob.jpg);
+
+  // @media screen and (min-width: 768px) {
+  //     linear-gradient(rgba(0, 0, 0, 0.56)),
+  //     linear-gradient(rgba(0, 0, 0, 0.56)), url(./images/bcg-tablet.jpg);
+  //   }
+  //   @media screen and (min-width: 1200px) {
+  //     linear-gradient(rgba(0, 0, 0, 0.56)),
+  //     linear-gradient(rgba(0, 0, 0, 0.56)), url(./images/bcg-desktop.jpg);
+  //   }
+}
+
+header .containet {
+  height: 230px;
+}
+
+.header-logo {
+  display: flex;
+}
+
+.header-logo-icon {
+  height: 24px;
+  width: 24px;
+}
+
+.header-search-form {
+  display: flex;
+  flex-direction: row;
+  width: 280px;
+  margin: 0 auto;
+  padding: 4px;
+  @media screen and (min-width: 420px) {
+    width: 336px;
+  }
+}
+
+.header-search-form-input {
+  // border-style: none;
+  // background: transparent;
+  // outline: none;
+}
+
+.search-icon {
+  height: 12px;
+  width: 12px;
+}
