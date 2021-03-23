@@ -2,9 +2,8 @@
 
 import headerInfo from '../templates/homeHeader.hbs';
 import logo from '../images/sprite.svg';
-import refs from './references';
 
-// загрузка страницы
+import refs from './references';
 
 loadStartPage({ headerInfo, logo });
 
