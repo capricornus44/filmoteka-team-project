@@ -1,18 +1,51 @@
-header {
+.header-start {
   background-color: rgba(0, 0, 0, 0.56);
-  // background-image:
-  //linear-gradient(rgba(0, 0, 0, 0.56)),
-  //  linear-gradient(rgba(0, 0, 0, 0.56)),
-  // url(../images/bcg-mob.jpg);
+  background-image: linear-gradient(
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url(../images/bcg-mob.jpg);
 
-  // @media screen and (min-width: 768px) {
-  //     linear-gradient(rgba(0, 0, 0, 0.56)),
-  //     linear-gradient(rgba(0, 0, 0, 0.56)), url(./images/bcg-tablet.jpg);
-  //   }
-  //   @media screen and (min-width: 1200px) {
-  //     linear-gradient(rgba(0, 0, 0, 0.56)),
-  //     linear-gradient(rgba(0, 0, 0, 0.56)), url(./images/bcg-desktop.jpg);
-  //   }
+  @include for-size(tablet) {
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url(../images/bcg-tablet.jpg);
+  }
+
+  @include for-size(desktop) {
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url(../images/bcg-desktop.jpg);
+  }
+}
+
+.header-lbr {
+  background-color: rgba(0, 0, 0, 0.56);
+  background-image: linear-gradient(
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url(../images/bcg-lbr-mob.jpg);
+
+  @include for-size(tablet) {
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url(../images/bcg-lbr-tablet.jpg);
+  }
+
+  @include for-size(desktop) {
+    background-image: linear-gradient(
+        rgba(47, 48, 58, 0.4),
+        rgba(47, 48, 58, 0.4)
+      ),
+      url(../images/bcg-lbr-desktop.jpg);
+  }
 }
 
 header .containet {
@@ -27,6 +60,23 @@ header .containet {
   height: 24px;
   width: 24px;
 }
+.header-logo-name {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.17;
+  color: $header-text-color;
+}
+
+.header-nav-form {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: $header-text-color;
+}
 
 .header-search-form {
   display: flex;
@@ -34,7 +84,8 @@ header .containet {
   width: 280px;
   margin: 0 auto;
   padding: 4px;
-  @media screen and (min-width: 420px) {
+
+  @include for-size(tablet) {
     width: 336px;
   }
 }
