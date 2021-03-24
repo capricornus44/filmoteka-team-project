@@ -46,6 +46,7 @@ function openLibrary() {
   clearFilmography();
 
   const data = JSON.parse(localStorage.getItem('watchedList'));
+  console.log(data);
   printFilmography(data);
 }
 
