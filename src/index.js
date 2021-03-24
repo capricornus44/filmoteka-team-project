@@ -6,3 +6,4 @@ import './js/servise/render';
 import './js/footerModal';
 import './js/modal';
 import './js/pagination';
+import './js/them';
