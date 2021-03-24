@@ -38,10 +38,10 @@ async function fetchFilmography() {
   printFilmography(movies);
 }
 
-function clearFilmography() {
+export function clearFilmography() {
   refs.gallery.innerHTML = '';
 }
 
-function printFilmography(movies) {
+export function printFilmography(movies) {
   refs.gallery.insertAdjacentHTML('beforeend', cardMurkup(movies));
 }
