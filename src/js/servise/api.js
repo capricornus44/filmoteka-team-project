@@ -112,6 +112,10 @@ export default class ApiService {
     this.page = newPage;
   }
 
+  get pageCount() {
+    return this.totalPages;
+  }
+
   resetPage() {
     this.page = 1;
   }
