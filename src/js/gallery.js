@@ -6,7 +6,6 @@ const apiService = new ApiService();
 
 export default async function startPage() {
   await apiService.fetchGenre();
-
   fetchFilmography();
 }
 
@@ -33,15 +32,15 @@ function onSearch(event) {
   printFilmography(movies);
 }
 
-async function fetchFilmography() {
+export async function fetchFilmography() {
   const movies = await apiService.fetch();
   printFilmography(movies);
 }
 
-function clearFilmography() {
+export function clearFilmography() {
   refs.gallery.innerHTML = '';
 }
 
-function printFilmography(movies) {
+export function printFilmography(movies) {
   refs.gallery.insertAdjacentHTML('beforeend', cardMurkup(movies));
 }
