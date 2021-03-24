@@ -2,13 +2,13 @@
 
 import headerInfo from '../templates/homeHeader.hbs';
 import logo from '../images/sprite.svg';
-import { printFilmography, clearFilmography } from './gallery.js';
 
 import refs from './references';
 import {
   fetchFilmography,
   clearFilmography,
   printFilmography,
+  onSearch,
 } from './gallery';
 
 loadStartPage({ headerInfo, logo });
@@ -23,10 +23,11 @@ const headerLogo = document.querySelector('#header-logo');
 const homeBtn = document.querySelector('#home');
 const myLibraryBtn = document.querySelector('#my-library');
 const myLibraryNav = document.querySelector('#lbr-buttons');
-const searchForm = document.querySelector('#header-search-form');
+const searchForm = document.querySelector('.header-search-form');
 const watchedBtn = document.querySelector('#watched');
 const queueBtn = document.querySelector('#queue');
 
+searchForm.addEventListener('submit', onSearch);
 headerLogo.addEventListener('click', openHome);
 homeBtn.addEventListener('click', openHome);
 myLibraryBtn.addEventListener('click', openLibrary);
