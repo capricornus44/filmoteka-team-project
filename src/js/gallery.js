@@ -9,31 +9,37 @@ export default async function startPage() {
   fetchFilmography();
 }
 
+const searchMove = document.querySelector('#header-search-form');
+
+searchMove.addEventListener('submit', onSearch);
+
 // ============================= Filmography rendering by request =============================
 function onSearch(event) {
   event.preventDefault();
 
   const form = event.currentTarget;
-  apiService.query = form.elements.query.value;
+  apiService.searchQuery = form.elements.query.value;
 
   clearFilmography();
 
-  if (apiService.query === '' || apiService.query.trim().length === 0) {
-    refs.errorRequest.innerHTML =
-      'Search result not successful. Enter the correct movie name and repeat';
-
-    return;
-  }
-
   apiService.resetPage();
+
+  if (
+    apiService.searchQuery === '' ||
+    apiService.searchQuery.trim().length === 0
+  ) {
+    // refs.errorRequest.innerHTML =
+    //   'Search result not successful. Enter the correct movie name and repeat';
+    // return;
+  }
 
   fetchFilmography();
 
   printFilmography(movies);
 }
 
-export async function fetchFilmography() {
-  const movies = await apiService.fetch();
+async function fetchFilmography() {
+  const movies = await apiService.fetch(apiService.searchQuery);
   printFilmography(movies);
 }
 
@@ -42,5 +48,5 @@ export function clearFilmography() {
 }
 
 export function printFilmography(movies) {
-  refs.gallery.insertAdjacentHTML('beforeend', cardMurkup(movies));
+  refs.gallery.innerHTML = cardMurkup(movies);
 }

@@ -2,6 +2,7 @@
 
 import headerInfo from '../templates/homeHeader.hbs';
 import logo from '../images/sprite.svg';
+import { printFilmography, clearFilmography } from './gallery.js';
 
 import refs from './references';
 import {
@@ -42,7 +43,9 @@ function openLibrary() {
   changeHeaderLibrary();
   shouWatchedHeader();
   clearFilmography();
-  printFilmography();
+
+  const data = JSON.parse(localStorage.getItem('watchedList'));
+  printFilmography(data);
 }
 
 function openWatchedFilms() {

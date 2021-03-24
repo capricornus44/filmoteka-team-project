@@ -32,7 +32,14 @@ export default class ApiService {
     this.url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
     const response = await fetch(this.url);
     const data = await response.json();
+    console.log(data.genres);
     GENRES = data.genres;
+
+    // const num = GENRES.length - 1;
+
+    // if (GENRES.length > 2) {
+    //   return GENRES.splice(2, num);
+    // }
   }
 
   async fetch(searchQuery) {
@@ -110,6 +117,10 @@ export default class ApiService {
 
   set pageNum(newPage) {
     this.page = newPage;
+  }
+
+  get pageCount() {
+    return this.totalPages;
   }
 
   resetPage() {
