@@ -44,11 +44,10 @@ async function fetchFilmography() {
   printFilmography(movies);
 }
 
-function clearFilmography() {
+export function clearFilmography() {
   refs.gallery.innerHTML = '';
 }
 
 export function printFilmography(movies) {
-  console.log(movies);
   refs.gallery.innerHTML = cardMurkup(movies);
 }
