@@ -1,7 +1,9 @@
 <ul class="list list-galery">
   {{#each this}}
 
-  <li class="card" data-id={{id}} data-title={{original_title}} data-poster={{poster_path}} data-genres={{genres}} data-date={{release_date}} data-rating={{vote_average}}>
+  <li class="card" data-id={{id}} data-title='{{original_title}}' data-poster={{poster_path}} data-genres='{{genres}}'
+    data-date='{{release_date}}' data-rating='{{vote_average}}'>
+
     <div class="image-box">
       <img src='https://image.tmdb.org/t/p/w500/{{poster_path}}' alt="image" class="card-picture" />
     </div>
