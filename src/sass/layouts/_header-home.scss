@@ -45,6 +45,7 @@ header .container {
 .header-nav {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
   margin-bottom: 41px;
 }
 
@@ -59,23 +60,16 @@ header .container {
   margin-right: 10px;
 }
 .header-logo-name {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 1.17;
-  color: $header-text-color;
-}
+  display: none;
 
-.lbr-button {
-  border-style: none;
-  background: transparent;
-  outline: none;
-  text-transform: uppercase;
-  color: $header-text-color;
-
-  &:first-child {
-    margin-right: 39px;
+  @include for-size(tablet) {
+    display: block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+    color: $header-text-color;
   }
 }
 
@@ -86,6 +80,24 @@ header .container {
   font-size: 12px;
   line-height: 1.17;
   color: $header-text-color;
+}
+
+.lbr-button {
+  border-style: none;
+  background: transparent;
+  outline: none;
+  text-transform: uppercase;
+  color: $header-text-color;
+  padding-left: 0px;
+  padding-right: 0px;
+
+  &:first-child {
+    margin-right: 39px;
+  }
+}
+
+.lbr-button-active {
+  border-bottom: 3px solid $accent-color;
 }
 
 .header-search-block {

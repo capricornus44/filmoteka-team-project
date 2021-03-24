@@ -6,7 +6,6 @@ const apiService = new ApiService();
 
 export default async function startPage() {
   await apiService.fetchGenre();
-
   fetchFilmography();
 }
 
