@@ -48,6 +48,7 @@ function clearFilmography() {
   refs.gallery.innerHTML = '';
 }
 
-function printFilmography(movies) {
-  refs.gallery.insertAdjacentHTML('beforeend', cardMurkup(movies));
+export function printFilmography(movies) {
+  console.log(movies);
+  refs.gallery.innerHTML = cardMurkup(movies);
 }
