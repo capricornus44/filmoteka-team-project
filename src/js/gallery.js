@@ -6,29 +6,21 @@ const apiService = new ApiService();
 
 export default async function startPage() {
   await apiService.fetchGenre();
-
   fetchFilmography();
 }
 
-const searchMove = document.querySelector('#header-search-form');
-
-searchMove.addEventListener('submit', onSearch);
-
 // ============================= Filmography rendering by request =============================
-function onSearch(event) {
+export function onSearch(event) {
   event.preventDefault();
-
+  console.log(event.currentTarget);
   const form = event.currentTarget;
-  apiService.searchQuery = form.elements.query.value;
+  apiService.query = form.elements.query.value;
 
   clearFilmography();
 
   apiService.resetPage();
 
-  if (
-    apiService.searchQuery === '' ||
-    apiService.searchQuery.trim().length === 0
-  ) {
+  if (apiService.query === '' || apiService.query.trim().length === 0) {
     // refs.errorRequest.innerHTML =
     //   'Search result not successful. Enter the correct movie name and repeat';
     // return;
@@ -39,12 +31,12 @@ function onSearch(event) {
   printFilmography(movies);
 }
 
-async function fetchFilmography() {
-  const movies = await apiService.fetch(apiService.searchQuery);
+export async function fetchFilmography() {
+  const movies = await apiService.fetch(apiService.query);
   printFilmography(movies);
 }
 
-function clearFilmography() {
+export function clearFilmography() {
   refs.gallery.innerHTML = '';
 }
 
