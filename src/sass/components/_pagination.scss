@@ -24,21 +24,26 @@
   // align-items: center;
   // text-align: center;
 
-  // &:hover,
-  // &:focus {
-  //   background-color: #fff !important;
-  // }
+  &:hover,
+  &:focus {
+    background-color: #f7f7f7 !important;
+  }
 }
 
 .tui-pagination .tui-page-btn.tui-is-selected {
   color: #fff !important;
   background: #ff6b08;
   // cursor: default;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b08 !important;
+  }
 }
 
-.tui-pagination .tui-page-btn.tui-is-selected:hover {
-  background: #ff6b08;
-}
+// .tui-pagination .tui-page-btn.tui-is-selected:hover {
+//   background: #ff6b08;
+// }
 
 .tui-pagination .tui-page-btn.tui-first,
 .tui-pagination .tui-page-btn.tui-last {
