@@ -1,6 +1,8 @@
 import cardMurkup from '../templates/filmGallery.hbs';
 import ApiService, { genres } from './servise/api';
 import refs from './references';
+// import changeTheme from './them';
+// changeTheme();
 
 const apiService = new ApiService();
 
