@@ -5,10 +5,6 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.333 !important;
-
-  // margin-bottom: 40px;
-  // margin-top: 40px;
-
   // @include for-size(tablet) {
   //   margin-bottom: 60px;
   //   margin-top: 50px;
@@ -20,36 +16,43 @@
 
 .tui-pagination .tui-page-btn {
   color: #000000 !important;
+  font-weight: 500 !important;
   line-height: 1.333 !important;
   border: none !important;
   border-radius: 5px !important;
-  // width: 40px !important;
-  // height: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  padding: 13px 13px 11px 13px !important;
   // display: flex;
   // align-items: center;
   // text-align: center;
-
-  // &:hover,
-  // &:focus {
-  //   background-color: #fff !important;
-  // }
+  &:hover,
+  &:focus {
+    background-color: #f7f7f7 !important;
+  }
 }
 
 .tui-pagination .tui-page-btn.tui-is-selected {
-  color: #fff;
+  color: #fff !important;
   background: #ff6b08;
   // cursor: default;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b08 !important;
+  }
 }
 
-.tui-pagination .tui-page-btn.tui-is-selected:hover {
-  background: #ff6b08;
-}
+// .tui-pagination .tui-page-btn.tui-is-selected:hover {
+//   background: #ff6b08;
+// }
 
 .tui-pagination .tui-page-btn.tui-first,
 .tui-pagination .tui-page-btn.tui-last {
   background: #f7f7f7;
   margin-right: 5px !important;
   margin-left: 5px !important;
+  padding: 14px 15px !important;
 
   &:hover,
   &:focus {
@@ -60,6 +63,7 @@
 .tui-pagination .tui-page-btn.tui-prev,
 .tui-pagination .tui-page-btn.tui-next {
   background: #f7f7f7;
+  padding: 14px 15px !important;
 
   &:hover,
   &:focus {
@@ -69,6 +73,8 @@
 
 .tui-pagination .tui-page-btn.tui-prev-is-ellip,
 .tui-pagination .tui-page-btn.tui-next-is-ellip {
+  padding: 4px 12px !important;
+
   &:hover,
   &:focus {
     background-color: #f7f7f7 !important;
