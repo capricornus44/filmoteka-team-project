@@ -9,3 +9,4 @@ import './js/pagination';
 import './js/them';
 import './js/spinner';
 import './js/auth';
+import './js/scrollUp';
