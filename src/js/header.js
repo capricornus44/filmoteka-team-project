@@ -25,6 +25,7 @@ const homeBtn = document.querySelector('#home');
 const myLibraryBtn = document.querySelector('#my-library');
 const myLibraryNav = document.querySelector('#lbr-buttons');
 const searchForm = document.querySelector('.header-search-form');
+const searchBlock = document.querySelector('#header-search-form');
 const watchedBtn = document.querySelector('#watched');
 const queueBtn = document.querySelector('#queue');
 const searchBtn = document.querySelector('#search');
@@ -32,7 +33,7 @@ const searchBtn = document.querySelector('#search');
 searchForm.addEventListener('submit', onSearch);
 headerLogo.addEventListener('click', openHome);
 homeBtn.addEventListener('click', openHome);
-myLibraryBtn.addEventListener('click', openLibrary);
+myLibraryBtn.addEventListener('click', openLibraryWatched);
 watchedBtn.addEventListener('click', openWatchedFilms);
 queueBtn.addEventListener('click', openQueueFilms);
 searchBtn.addEventListener('click', openSearchForm);
@@ -43,25 +44,25 @@ function openHome() {
   fetchFilmography();
 }
 
-function openLibrary() {
+function openLibraryWatched() {
   changeHeaderLibrary();
-  shouWatchedHeader();
-  clearFilmography();
-
-  const data = JSON.parse(localStorage.getItem('watchedList'));
-  console.log(data);
-  printFilmography(data);
+  openWatchedFilms();
 }
 
 function openWatchedFilms() {
   shouWatchedHeader();
   clearFilmography();
-  printFilmography();
+  const data = JSON.parse(localStorage.getItem('watchedList'));
+  console.log(data);
+  printFilmography(data);
 }
+
 function openQueueFilms() {
   shouQueueHeader();
-
-  console.log(2);
+  clearFilmography();
+  const data = JSON.parse(localStorage.getItem('queueList'));
+  console.log(data);
+  printFilmography(data);
 }
 
 function changeHeaderHome() {
@@ -71,7 +72,7 @@ function changeHeaderHome() {
   myLibraryBtn.classList.remove('lbr-button-active');
   myLibraryNav.classList.add('is-hidden');
   myLibraryNav.classList.remove('header-lbr-buttons');
-  searchForm.classList.remove('is-hidden');
+  searchBlock.classList.remove('is-hidden');
 }
 function changeHeaderLibrary() {
   refs.headerBlock.classList.remove('header-start');
@@ -80,7 +81,7 @@ function changeHeaderLibrary() {
   myLibraryBtn.classList.add('lbr-button-active');
   myLibraryNav.classList.remove('is-hidden');
   myLibraryNav.classList.add('header-lbr-buttons');
-  searchForm.classList.add('is-hidden');
+  searchBlock.classList.add('is-hidden');
 }
 
 function shouWatchedHeader() {
