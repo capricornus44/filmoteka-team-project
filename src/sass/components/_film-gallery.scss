@@ -1,12 +1,23 @@
+.section-main {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @include for-size(tablet) {
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+}
+
 .list-galery {
   margin-top: -20px;
-  padding-top: 20px;
+  padding-bottom: 40px;
 
   @include for-size(tablet) {
     display: flex;
     flex-wrap: wrap;
     margin-left: -30px;
     margin-top: -30px;
+    padding-bottom: 50px;
   }
 
   .card {

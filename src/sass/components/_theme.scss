@@ -31,6 +31,12 @@ body.dark-theme .modal {
     border: none;
   }
 }
+body.dark-theme .tui-pagination .tui-page-btn {
+  color: $header-text-color !important;
+}
+body.dark-theme .tui-pagination .tui-page-btn:hover {
+  color: $main-text-color !important;
+}
 
 .dark-theme {
   background-color: $background-theme-dark;

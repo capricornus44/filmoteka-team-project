@@ -11,6 +11,6 @@ import './js/spinner';
 import './js/authMetods';
 import './firebase/auth';
 import './js/scrollUp';
-import './js/auth';
-import './js/scrollUp';
+import './js/languages';
 import './js/trailer';
+

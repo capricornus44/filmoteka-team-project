@@ -1,13 +1,8 @@
 export const API_KEY = '989c90c59500ad26e3fa4e26d53d2bd3';
 export const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
-export let GENRES = [
-  // {
-  //   id: 28,
-  //   name: 'Action',
-  // },
-];
-
+export let language = 'ru';
+export let GENRES = [];
 export default class ApiService {
   constructor() {
     this.totalPages;
@@ -19,13 +14,19 @@ export default class ApiService {
 
     this.searchMovies = `${BASE_URL}/search/movie`;
     this.trendMovies = `${BASE_URL}/trending/movie/day`;
-    this.genres = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
-
+    this.genres = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
+    this.lenguage = 'ru';
     // this.movie = `${BASE_URL}/movie/${movieId}`;
   }
+  // async fetchLenguage() {
+  //   this.url = `${BASE_URL}/movie/list?api_key=${API_KEY}&language=${language}`;
+  //   const response = await fetch(this.url);
+  //   const data = await response.json();
+  //   console.log(data);
+  // }
 
   async fetchGenre() {
-    this.url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`;
+    this.url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${language}`;
     const response = await fetch(this.url);
     const data = await response.json();
 
