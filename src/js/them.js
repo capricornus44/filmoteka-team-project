@@ -1,6 +1,6 @@
 const Theme = {
-  LIGHT: 'light-theme',
-  DARK: 'dark-theme',
+LIGHT: 'light-theme',
+DARK: 'dark-theme',
 };
 
 const refs = {
@@ -9,7 +9,7 @@ const refs = {
 
 refs.toggle.addEventListener('click', changeTheme);
 
-export default function changeTheme() {
+function changeTheme() {
   if (this.classList.toggle('active') === true) {
     replaceTheme(Theme.LIGHT, Theme.DARK);
   } else {

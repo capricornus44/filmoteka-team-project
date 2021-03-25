@@ -6,6 +6,9 @@ import refs from './references';
 import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
 
+let btnToWatched = null;
+let btnToQueue = null;
+
 const apiService = new ApiService();
 
 refs.gallery.addEventListener('click', onOpenModal);
@@ -15,17 +18,13 @@ function onOpenModal(event) {
   if (event.target === event.currentTarget) {
     return;
   }
+
   const movieId = event.target.closest('li').dataset.id;
 
-  // let movieId = '';
-  // if (event.target.nodeName === 'LI') {
-  //   movieId = event.target.dataset.id;
-  // } else {
-  //   movieId = event.target.closest('li').dataset.id;
-  // }
+  const dataLocalWatched = JSON.parse(localStorage.getItem('watchedList'));
+  const dataLocalQueue = JSON.parse(localStorage.getItem('queueList'));
 
   let data = event.target.parentNode.parentNode;
-  console.log(data);
 
   let objCurrentFilm = {
     id: movieId,
@@ -36,8 +35,6 @@ function onOpenModal(event) {
     vote_average: data.dataset.rating,
   };
 
-  console.log(objCurrentFilm);
-
   localStorage.setItem('currentFilm', JSON.stringify(objCurrentFilm));
 
   apiService.fetchMovieById(movieId).then(movie => {
@@ -47,28 +44,54 @@ function onOpenModal(event) {
       })
       .show();
 
-    const btnToWatched = document.querySelector('#watched_modal');
-    const btnToQueue = document.querySelector('#queue_modal');
+    btnToWatched = document.querySelector('#watched_modal');
+    btnToQueue = document.querySelector('#queue_modal');
+
     btnToWatched.addEventListener('click', addToWatched);
     btnToQueue.addEventListener('click', addToQueue);
+
+    dataLocalWatched.forEach(movie => {
+      if (movie.id === movieId) {
+        btnToWatched.textContent = 'Remove from Watched';
+        // btnToWatched.classList.add('btn-is-active');
+        return false;
+      }
+    });
+    dataLocalQueue.forEach(movie => {
+      if (movie.id === movieId) {
+        btnToQueue.textContent = 'remove from queue';
+        // btnToQueue.classList.add('btn-is-active');
+        return false;
+      }
+    });
   });
   document.body.setAttribute('style', 'overflow:hidden');
 
   function addToWatched() {
+    btnToWatched.textContent = 'Remove from Watched';
+    // btnToWatched.classList.remove('btn-is-active');
     let arrFilmsToWatch = JSON.parse(localStorage.getItem('watchedList')) || [];
     const obj = JSON.parse(localStorage.getItem('currentFilm'));
-    if (arrFilmsToWatch.find(e => e.id === obj.id)) return;
-
-    arrFilmsToWatch.push(obj);
+    if (arrFilmsToWatch.find(e => e.id === obj.id)) {
+      arrFilmsToWatch = arrFilmsToWatch.filter(movie => movie.id !== obj.id);
+      btnToWatched.textContent = 'add to Watched';
+    } else {
+      arrFilmsToWatch.push(obj);
+    }
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
   }
 
   function addToQueue() {
+    btnToQueue.textContent = 'remove from queue';
+    // btnToQueue.classList.add('btn-is-active');
     let arrFilmsToQueue = JSON.parse(localStorage.getItem('queueList')) || [];
     const obj = JSON.parse(localStorage.getItem('currentFilm'));
-    if (arrFilmsToQueue.find(e => e.title === obj.title)) return;
-
-    arrFilmsToQueue.push(obj);
+    if (arrFilmsToQueue.find(e => e.id === obj.id)) {
+      arrFilmsToQueue = arrFilmsToQueue.filter(movie => movie.id !== obj.id);
+      btnToQueue.textContent = 'add to queue';
+    } else {
+      arrFilmsToQueue.push(obj);
+    }
     localStorage.setItem('queueList', JSON.stringify(arrFilmsToQueue));
   }
 }
