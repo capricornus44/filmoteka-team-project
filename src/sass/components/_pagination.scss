@@ -1,19 +1,21 @@
 #pagination {
+  margin: 0;
+
   color: #000000 !important;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.333 !important;
 
-  margin-bottom: 40px;
-  margin-top: 40px;
+  // margin-bottom: 40px;
+  // margin-top: 40px;
 
-  @include for-size(tablet) {
-    margin-bottom: 60px;
-    margin-top: 50px;
-  }
-  @include for-size(desktop) {
-    margin-top: 46px;
-  }
+  // @include for-size(tablet) {
+  //   margin-bottom: 60px;
+  //   margin-top: 50px;
+  // }
+  // @include for-size(desktop) {
+  //   margin-top: 46px;
+  // }
 }
 
 .tui-pagination .tui-page-btn {
@@ -21,8 +23,8 @@
   line-height: 1.333 !important;
   border: none !important;
   border-radius: 5px !important;
-  width: 40px !important;
-  height: 40px !important;
+  // width: 40px !important;
+  // height: 40px !important;
   // display: flex;
   // align-items: center;
   // text-align: center;

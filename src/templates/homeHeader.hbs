@@ -36,4 +36,31 @@
         <button id='watched' class='btn-base'>Watched</button>
         <button id='queue' class='btn-base'>queue</button>
     </div>
+
+    <div class="switch-box">
+        <span class="toggle"></span>
+         <svg class="flag-russia">
+                <use href="{{this}}#icon-russia"></use>
+            </svg>
+        <div class="leng-switch__control">
+          <input
+            class="leng-switch__toggle"
+            type="checkbox"
+            name="leng"
+            id="leng-switch-toggle"
+            aria-label="Переключить между тёмной и светлой темой"
+          />
+          <label
+            aria-hidden="true"
+            class="leng-switch__track"
+            for="leng-switch-toggle"
+          >
+          </label>
+          <div aria-hidden="true" class="leng-switch__marker"></div>
+        </div>
+        <svg class="flag-en">
+                <use href="{{this}}#icon-united-kingdom"></use>
+            </svg>
+      </div>
+
 </div>
