@@ -6,8 +6,8 @@ scrollUp.addEventListener('click', backToTop);
 function trackScroll() {
   const scrolled = window.pageYOffset;
   const coords = document.documentElement.clientHeight;
-  console.log(scrolled);
-  console.log(coords);
+  // console.log(scrolled);
+  // console.log(coords);
 
   if (scrolled > coords) {
     scrollUp.classList.add('scroll-up-show');

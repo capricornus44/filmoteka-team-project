@@ -22,6 +22,7 @@ function onOpenModal(event) {
   const movieId = event.target.closest('li').dataset.id;
 
   const dataLocalWatched = JSON.parse(localStorage.getItem('watchedList'));
+  const dataLocalQueue = JSON.parse(localStorage.getItem('queueList'));
 
   let data = event.target.parentNode.parentNode;
 
@@ -49,20 +50,26 @@ function onOpenModal(event) {
     btnToWatched.addEventListener('click', addToWatched);
     btnToQueue.addEventListener('click', addToQueue);
 
-    // dataLocalWatched.forEach(movie => {
-    //   if (movie.id === movieId) {
-    //     btnToWatched.textContent = 'Remove';
-    //     console.log(btnToWatched.textContent);
-    //   } else {
-    //     btnToWatched.textContent = 'Add to Watched';
-    //     console.log(btnToWatched.textContent);
-    //   }
-    // });
+    dataLocalWatched.forEach(movie => {
+      if (movie.id === movieId) {
+        btnToWatched.textContent = 'Remove from Watched';
+        // btnToWatched.classList.add('btn-is-active');
+        return false;
+      }
+    });
+    dataLocalQueue.forEach(movie => {
+      if (movie.id === movieId) {
+        btnToQueue.textContent = 'remove from queue';
+        // btnToQueue.classList.add('btn-is-active');
+        return false;
+      }
+    });
   });
   document.body.setAttribute('style', 'overflow:hidden');
 
   function addToWatched() {
-    btnToWatched.textContent = 'Remove';
+    btnToWatched.textContent = 'Remove from Watched';
+    // btnToWatched.classList.remove('btn-is-active');
     let arrFilmsToWatch = JSON.parse(localStorage.getItem('watchedList')) || [];
     const obj = JSON.parse(localStorage.getItem('currentFilm'));
     if (arrFilmsToWatch.find(e => e.id === obj.id)) {
@@ -75,7 +82,8 @@ function onOpenModal(event) {
   }
 
   function addToQueue() {
-    btnToQueue.textContent = 'delete';
+    btnToQueue.textContent = 'remove from queue';
+    // btnToQueue.classList.add('btn-is-active');
     let arrFilmsToQueue = JSON.parse(localStorage.getItem('queueList')) || [];
     const obj = JSON.parse(localStorage.getItem('currentFilm'));
     if (arrFilmsToQueue.find(e => e.id === obj.id)) {
