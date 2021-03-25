@@ -15,7 +15,10 @@ refs.gallery.addEventListener('click', onOpenModal);
 
 function onOpenModal(event) {
   event.preventDefault();
-  if (event.target === event.currentTarget) {
+  if (
+    event.target === event.currentTarget ||
+    event.target.className === 'watch-trailer-btn'
+  ) {
     return;
   }
 
