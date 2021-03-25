@@ -174,10 +174,24 @@ ul {
   }
 }
 
-.btn_items > .btn {
+.btn_items > .btn-base {
   margin-right: 15px;
 }
 
-.btn_items > .btn:last-child {
+.btn_items > .btn-base:last-child {
   margin-right: 0;
+}
+
+.btn_items > .btn-base {
+  color: #000;
+  border: 1px solid #000;
+  outline: none;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    border: none;
+    background-color: $active-btn-color;
+    transform: scale(1.05);
+  }
 }
