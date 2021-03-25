@@ -30,9 +30,17 @@
       max-width: calc((100% / 4) - 30px);
     }
 
+    &:hover .image-box {
+      box-shadow: 0px -3px 18px 0px$active-btn-color;
+    }
+
     .image-box {
       min-width: 240px;
       min-height: 398px;
+      overflow: hidden;
+
+      border-radius: 5px;
+      transition: 300ms;
 
       @include for-size(tablet) {
         height: 398px;
@@ -42,6 +50,12 @@
         height: 100%;
 
         border-radius: 5px;
+        transition: 1s;
+
+        &:hover,
+        &:focus {
+          transform: scale(1.05);
+        }
       }
     }
 
@@ -50,7 +64,6 @@
 
       font-weight: 500;
       font-size: 12px;
-      color: $main-text-color;
       text-transform: uppercase;
     }
 
@@ -79,12 +92,4 @@
       }
     }
   }
-}
-.dark-theme {
-  background-color: $main-text-color;
-  color: $header-text-color;
-}
-.light-theme {
-  background-color: $header-text-color;
-  color: $main-text-color;
 }

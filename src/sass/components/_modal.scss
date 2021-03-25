@@ -170,7 +170,7 @@ ul {
   display: flex;
   justify-content: space-between;
   @include for-size(desktop) {
-    display: inline-block;
+    justify-content: space-around;
   }
 }
 
