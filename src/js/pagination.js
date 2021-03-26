@@ -2,6 +2,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import ApiService from './servise/api';
 import { printFilmography } from './gallery';
+import { backToTop } from './scrollUp';
 
 // const paginationRef = document.querySelector(`[data-pagination-value="pag"]`);
 
@@ -36,4 +37,10 @@ pagination.on('beforeMove', async evt => {
   apiService.page = evt.page;
   const movies = await apiService.fetch();
   printFilmography(movies);
+  // backToTop();
 });
+
+// pagination.movePageTo(5);*
+// pagination.getCurrentPage(5)
+// pagination.setItemsPerPage(30)
+// pagination.setTotalItems(200)
