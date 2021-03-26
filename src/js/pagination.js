@@ -4,8 +4,6 @@ import ApiService from './servise/api';
 import { printFilmography } from './gallery';
 import { backToTop } from './scrollUp';
 
-// const paginationRef = document.querySelector(`[data-pagination-value="pag"]`);
-
 const apiService = new ApiService();
 const container = document.getElementById('pagination');
 
@@ -57,10 +55,6 @@ const init = async total => {
 
 init();
 
-// pagination.movePageTo(5);*
-// pagination.getCurrentPage(5)
-// pagination.setItemsPerPage(30)
-//
 export default {
   reset: init,
 };
