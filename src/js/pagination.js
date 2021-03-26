@@ -5,6 +5,7 @@ import { printFilmography } from './gallery';
 import { backToTop } from './scrollUp';
 
 const apiService = new ApiService();
+
 const container = document.getElementById('pagination');
 
 const pagination = new Pagination(container, {
@@ -35,6 +36,7 @@ pagination.on('beforeMove', async evt => {
   backToTop();
   apiService.page = evt.page;
   const movies = await apiService.fetch();
+  console.log(movies);
   printFilmography(movies.results);
 });
 

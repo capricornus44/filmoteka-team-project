@@ -1,6 +1,7 @@
 import cardMurkup from '../templates/filmGallery.hbs';
 import ApiService, { genres } from './servise/api';
 import refs from './references';
+import pagination from './pagination';
 
 const apiService = new ApiService();
 
@@ -10,7 +11,7 @@ export default async function startPage() {
 }
 
 // ============================= Filmography rendering by request =============================
-export function onSearch(event) {
+export async function onSearch(event) {
   event.preventDefault();
   const form = event.currentTarget;
   apiService.query = form.elements.query.value;
@@ -26,8 +27,6 @@ export function onSearch(event) {
   }
 
   fetchFilmography();
-
-  printFilmography(movies);
 }
 
 export async function fetchFilmography() {
@@ -40,6 +39,7 @@ export function clearFilmography() {
 }
 
 export function printFilmography(movies) {
-  console.log(movies);
   refs.gallery.innerHTML = cardMurkup(movies);
+  console.log(movies);
+  pagination.reset(movies.length);
 }
