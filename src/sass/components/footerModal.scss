@@ -1,20 +1,23 @@
-.basicLightbox {
-  overflow: auto;
-}
+// .basicLightbox {
+//   overflow: auto;
+// }
 
 .footer-modal {
+  overflow: auto;
   width: 320px;
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  margin-left: -50px;
-  margin-top: -50px;
+  margin-left: -40px;
+  margin-top: -40px;
 
   @include for-size(tablet) {
     width: 768px;
   }
   @include for-size(desktop) {
-    width: 1280px;
+    width: 1024px;
+    height: 100%;
+    overflow: hidden;
   }
 }
 
@@ -25,9 +28,9 @@
 .student {
   overflow: hidden;
   position: relative;
-  height: 450px;
-  margin-left: 50px;
-  margin-top: 50px;
+  height: 45vh;
+  margin-left: 40px;
+  margin-top: 40px;
   flex-basis: calc(100% / 1 - 50px);
   border-radius: 5%;
   background-image: url(/images/bcg-lbr-mob.jpg);
@@ -44,7 +47,7 @@
   &:focus {
     box-shadow: 0px -3px 18px 0px $accent-color;
     transition: 300ms;
-    transform: scale(1.15);
+    transform: scale(1.05);
   }
 }
 
@@ -126,9 +129,11 @@
 }
 
 .social-list {
+  list-style: none;
   display: flex;
   justify-content: center;
   margin-top: 10px;
+  padding: 0;
 }
 
 .social-list-link {
