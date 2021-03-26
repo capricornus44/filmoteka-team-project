@@ -17,7 +17,7 @@ function trackScroll() {
   }
 }
 
-function backToTop() {
+export function backToTop() {
   if (window.pageYOffset > 0) {
     window.scrollTo({
       top: 0,
