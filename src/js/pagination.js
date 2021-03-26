@@ -17,7 +17,8 @@ const pagination = new Pagination(container, {
   centerAlign: true,
   template: {
     page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
     moveButton:
       '<a href="#" class="tui-page-btn tui-{{type}}">' +
       '<span class="tui-ico-{{type}}">{{type}}</span>' +
@@ -29,15 +30,16 @@ const pagination = new Pagination(container, {
     moreButton:
       '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
       '<span class="tui-ico-ellip">...</span>' +
-      '</a>'
-  }
+      '</a>',
+  },
 });
 
 pagination.on('beforeMove', async evt => {
+  backToTop();
   apiService.page = evt.page;
   const movies = await apiService.fetch();
   printFilmography(movies);
-  // backToTop();
+  backToTop();
 });
 
 // pagination.movePageTo(5);*
