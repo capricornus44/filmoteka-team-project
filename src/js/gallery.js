@@ -43,5 +43,6 @@ export function clearFilmography() {
 }
 
 export function printFilmography(movies) {
+  console.log(movies);
   refs.gallery.innerHTML = cardMurkup(movies);
 }
