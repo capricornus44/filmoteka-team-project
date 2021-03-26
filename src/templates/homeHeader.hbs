@@ -6,6 +6,11 @@
         <h1 class="header-logo-name">Filmoteka</h1>
     </div>
 
+    <div class="btn-header-aut">
+        <button type="button" id="buttonModHeader" class="lbr-button btn-modal-registr">войти</button>
+        <button type="submit" id="auth-out" class="lbr-button">выйти</button>
+    </div>
+
     <div class="header-nav-form">
         <p>Приветствую тебя <span>{{name}}</span></p>
         <button id='home' class='lbr-button lbr-button-active'>Home</button>
@@ -14,6 +19,7 @@
     </div>
 
 </div>
+
 
 <div class="header-search-block">
     <div id="header-search-form">
@@ -24,7 +30,7 @@
             </svg>
         </form>
     </div>
-    <div id='auth-div'>
+    {{!-- <div id='auth-div'>
         <form action="" id='auth-form' name='auth'>
             <input type="text" name="name">
             <input type="text" name="email">
@@ -33,7 +39,8 @@
             <button type="submit" id='auth-get'>войти</button>
             <button type="submit" id='auth-out'>выйти</button>
         </form>
-    </div>
+    </div> --}}
+
 
     <div id='lbr-buttons' class='is-hidden'>
         <button id='watched' class='btn-base'>Watched</button>

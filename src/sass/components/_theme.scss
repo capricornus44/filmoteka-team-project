@@ -1,45 +1,66 @@
-body.light-theme .list-galery {
-  & .card-title {
+.light-theme .list-galery {
+  .card-title {
     color: $main-text-color;
   }
 }
-body.dark-theme .list-galery {
-  & .card-title {
+.dark-theme .list-galery {
+  .card-title {
     color: $header-text-color;
   }
 }
-body.dark-theme .footer-text {
+.dark-theme .footer-text {
   color: $header-text-color;
   background-color: $bg-theme-dark-footer;
 }
 
-body.dark-theme .modal {
+.dark-theme .modal {
   background-color: $background-theme-dark;
   color: $header-text-color;
 
-  & .vote_count {
+  .vote_count {
     background-color: $background-theme-dark;
     color: $header-text-color;
   }
 
-  & .btn_items > .btn-base {
+  .btn_items > .btn-base {
     color: $header-text-color;
     border: 1px solid $header-text-color;
   }
-  & .btn_items > .btn-base:hover,
+  .btn_items > .btn-base:hover,
   .btn_items > .btn-base:focus {
     border: none;
   }
 }
-body.dark-theme .tui-pagination .tui-page-btn {
+.dark-theme .tui-pagination .tui-page-btn {
   color: $header-text-color !important;
 }
-body.dark-theme .tui-pagination .tui-page-btn:hover {
+.dark-theme .tui-pagination .tui-page-btn:hover {
   color: $main-text-color !important;
 }
 
 .dark-theme .sorry_text {
   color: $header-text-color;
+}
+
+.dark-theme .auth-nav-registr {
+  background: linear-gradient($background-theme-dark, $bg-theme-dark-footer);
+
+  .btn-box-get-out .auth-send {
+    color: $header-text-color;
+  }
+
+  .input-box-registr .input-registr {
+    color: $header-text-color;
+    border-bottom: 0.5px solid $header-text-color;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  .registr-box .auth-get {
+    color: $header-text-color;
+  }
 }
 
 .dark-theme {

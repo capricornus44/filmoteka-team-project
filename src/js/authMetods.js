@@ -35,6 +35,7 @@ async function getAuthent(ev) {
   const user = await signinWithEmailAndPassword(emailData, passwordData);
 }
 
+
 async function outAuthent(ev) {
   ev.preventDefault();
   const user = await signOut();
