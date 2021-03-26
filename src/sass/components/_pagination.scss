@@ -1,6 +1,32 @@
 #pagination {
   margin: 0;
 
+ width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  @include for-size(mobile) {
+    width: 480px;
+  }
+
+  @include for-size(tablet) {
+    margin-bottom: 60px;
+    margin-top: 50px;
+  }
+
+  @include for-size(tablet-only) {
+    width: 768px;
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+
+  @include for-size(desktop) {
+    width: 1200px;
+    margin-top: 46px;
+  }
+
   color: #000000 !important;
   font-weight: 500;
   font-size: 12px;
@@ -12,6 +38,7 @@
   // @include for-size(desktop) {
   //   margin-top: 46px;
   // }
+
 }
 
 .tui-pagination .tui-page-btn {
