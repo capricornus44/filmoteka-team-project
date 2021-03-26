@@ -29,10 +29,11 @@
   width: 85vw;
   height: 55vh;
 
+  background: linear-gradient($header-text-color, $color-text-modal);
+
   @include for-size(mobile) {
     max-width: 350px;
   }
-  background: linear-gradient($header-text-color, $color-text-modal);
 
   .auth-nav-registr-form {
     width: 100%;
