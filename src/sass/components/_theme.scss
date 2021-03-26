@@ -48,6 +48,9 @@ body.dark-theme .tui-pagination .tui-page-btn:hover {
 }
 
 .toggle {
+  position: absolute;
+  top: 5px;
+  right: 20px;
   font-size: 200%;
 }
 .toggle:before {
