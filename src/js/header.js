@@ -1,5 +1,6 @@
 import headerInfo from '../templates/homeHeader.hbs';
 import logo from '../images/sprite.svg';
+import pagination from './pagination';
 
 import searchCard from '../templates/searchCard.hbs';
 import ApiService, { GENRES } from './servise/api';
@@ -42,6 +43,7 @@ function openHome() {
   changeHeaderHome();
   clearFilmography();
   fetchFilmography();
+  pagination.reset();
 }
 
 function openLibraryWatched() {
@@ -55,6 +57,7 @@ function openWatchedFilms() {
   const data = JSON.parse(localStorage.getItem('watchedList'));
   console.log(data);
   printFilmography(data);
+  pagination.reset(data.length);
 }
 
 function openQueueFilms() {
@@ -63,6 +66,7 @@ function openQueueFilms() {
   const data = JSON.parse(localStorage.getItem('queueList'));
   console.log(data);
   printFilmography(data);
+  pagination.reset(data.length);
 }
 
 function changeHeaderHome() {

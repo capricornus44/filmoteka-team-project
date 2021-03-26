@@ -70,7 +70,7 @@ export default class ApiService {
         };
       });
 
-      return data.results;
+      return data;
     } catch (error) {
       console.log(error);
     }

@@ -8,9 +8,8 @@ import { backToTop } from './scrollUp';
 
 const apiService = new ApiService();
 const container = document.getElementById('pagination');
+
 const pagination = new Pagination(container, {
-  totalItems: 16000,
-  //   totalPage: apiService.pageCount,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
@@ -38,11 +37,30 @@ pagination.on('beforeMove', async evt => {
   backToTop();
   apiService.page = evt.page;
   const movies = await apiService.fetch();
-  printFilmography(movies);
-  backToTop();
+  printFilmography(movies.results);
 });
+
+let totalItemsFromServer;
+
+const init = async total => {
+  if (!total && !totalItemsFromServer) {
+    totalItemsFromServer = await apiService.fetch();
+  }
+
+  if (!total) {
+    total = totalItemsFromServer.total_results;
+  }
+
+  pagination.setTotalItems(total);
+  pagination.reset();
+};
+
+init();
 
 // pagination.movePageTo(5);*
 // pagination.getCurrentPage(5)
 // pagination.setItemsPerPage(30)
-// pagination.setTotalItems(200)
+//
+export default {
+  reset: init,
+};
