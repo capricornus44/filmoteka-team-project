@@ -38,6 +38,10 @@ body.dark-theme .tui-pagination .tui-page-btn:hover {
   color: $main-text-color !important;
 }
 
+.dark-theme .sorry_text {
+  color: $header-text-color;
+}
+
 .dark-theme {
   background-color: $background-theme-dark;
   transition: 300ms;
