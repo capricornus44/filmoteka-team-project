@@ -71,11 +71,6 @@
   }
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
-}
-
 .modal_list_item {
   display: flex;
 
@@ -160,12 +155,10 @@ ul {
   color: $main-text-color;
   border: 1px solid $main-text-color;
   outline: none;
+}
 
-  &:hover,
-  &:focus {
-    color: $header-text-color;
-    border: none;
-    background-color: $active-btn-color;
-    transform: scale(1.05);
-  }
+.btn_items > .btn-base.btn-is-active {
+  color: $header-text-color;
+  border: none;
+  outline: $accent-color;
 }

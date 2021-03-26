@@ -39,6 +39,7 @@
     }
     @include for-size(desktop) {
       max-width: calc((100% / 4) - 30px);
+      margin-right: 0;
     }
 
     &:hover .image-box {

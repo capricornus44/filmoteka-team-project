@@ -24,5 +24,6 @@
 .btn-is-active {
   outline: none;
   border: 1px solid $accent-color;
+  // color: $header-text-color;
   background-color: $active-btn-color;
 }
