@@ -37,9 +37,14 @@
   line-height: 1.333 !important;
   border: none !important;
   border-radius: 5px !important;
-  width: 40px !important;
-  height: 40px !important;
-  padding: 13px 13px 11px 13px !important;
+  width: 38px !important;
+  height: 38px !important;
+  padding-top: 13px !important;
+
+  @include for-size(mobile) {
+    width: 40px !important;
+    height: 40px !important;
+  }
 
   &:hover,
   &:focus {
@@ -62,7 +67,7 @@
   background: #f7f7f7;
   margin-right: 5px !important;
   margin-left: 5px !important;
-  padding: 14px 15px !important;
+  padding-top: 14px !important;
 
   &:hover,
   &:focus {
@@ -72,8 +77,14 @@
 
 .tui-pagination .tui-page-btn.tui-prev,
 .tui-pagination .tui-page-btn.tui-next {
+  display: none;
+
+  @include for-size(mobile) {
+    display: inline-block;
+  }
+
   background: #f7f7f7;
-  padding: 14px 15px !important;
+  padding: 15px 15px !important;
 
   &:hover,
   &:focus {
@@ -83,7 +94,12 @@
 
 .tui-pagination .tui-page-btn.tui-prev-is-ellip,
 .tui-pagination .tui-page-btn.tui-next-is-ellip {
+  display: none;
   padding: 4px 12px !important;
+
+  @include for-size(mobile) {
+    display: inline-block;
+  }
 
   &:hover,
   &:focus {
