@@ -33,7 +33,7 @@ export function onSearch(event) {
 
 export async function fetchFilmography() {
   const movies = await apiService.fetch(apiService.query);
-  printFilmography(movies);
+  printFilmography(movies.results);
 }
 
 export function clearFilmography() {
