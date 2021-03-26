@@ -12,7 +12,6 @@ export default async function startPage() {
 // ============================= Filmography rendering by request =============================
 export function onSearch(event) {
   event.preventDefault();
-  // console.log(event.currentTarget);
   const form = event.currentTarget;
   apiService.query = form.elements.query.value;
 

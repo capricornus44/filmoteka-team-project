@@ -59,7 +59,7 @@ async function openWatchedFilms() {
   clearFilmography();
   const data = JSON.parse(localStorage.getItem('watchedList'));
   printFilmography(filmList);
-    if (!data.length) {
+  if (!data.length) {
     createMarkupLibrary();
     return;
   }

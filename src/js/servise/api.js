@@ -16,7 +16,6 @@ export default class ApiService {
     this.trendMovies = `${BASE_URL}/trending/movie/day`;
     this.genres = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
     this.lenguage = 'ru';
-    // this.movie = `${BASE_URL}/movie/${movieId}`;
   }
   // async fetchLenguage() {
   //   this.url = `${BASE_URL}/movie/list?api_key=${API_KEY}&language=${language}`;
