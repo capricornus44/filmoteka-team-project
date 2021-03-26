@@ -1,5 +1,6 @@
 import headerInfo from '../templates/homeHeader.hbs';
 import logo from '../images/sprite.svg';
+import smile from '../images/sorry.png';
 
 import searchCard from '../templates/searchCard.hbs';
 import ApiService, { GENRES } from './servise/api';
@@ -53,7 +54,11 @@ function openWatchedFilms() {
   shouWatchedHeader();
   clearFilmography();
   const data = JSON.parse(localStorage.getItem('watchedList'));
-  console.log(data);
+  if (!data.length) {
+    createMarkupLibrary();
+    return;
+  }
+
   printFilmography(data);
 }
 
@@ -61,7 +66,10 @@ function openQueueFilms() {
   shouQueueHeader();
   clearFilmography();
   const data = JSON.parse(localStorage.getItem('queueList'));
-  console.log(data);
+  if (!data.length) {
+    createMarkupLibrary();
+    return;
+  }
   printFilmography(data);
 }
 
@@ -94,6 +102,15 @@ function shouQueueHeader() {
   queueBtn.classList.add('btn-is-active');
 }
 
+function createMarkupLibrary() {
+  const markup = `<div class="library">
+      <h3 class="sorry_text">Sorry, you haven't added anything here yet.</h3>
+      <img class="sorry_img" src="./${smile}" alt="smile">
+      </div>`;
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
+  // document.querySelector('#pagination').innerHTML = '';
+}
+
 // логика на поиска
 
 function openSearchForm(event) {
@@ -107,7 +124,6 @@ function openSearchForm(event) {
 
 function searchFilm(ev) {
   ev.preventDefault();
-  console.log(1);
 }
 
 // function loadStartPage({ headerInfo, logo }) {

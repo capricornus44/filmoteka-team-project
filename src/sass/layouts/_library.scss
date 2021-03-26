@@ -1,0 +1,23 @@
+.library {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sorry_text {
+  margin-bottom: 20px;
+  text-align: center;
+
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1, 16;
+}
+
+.sorry_img {
+  width: 300px;
+
+  @include for-size(tablet) {
+    width: 500px;
+  }
+}
