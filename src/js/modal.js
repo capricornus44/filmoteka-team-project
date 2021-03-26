@@ -61,10 +61,10 @@ function onOpenModal(event) {
     btnToWatched.addEventListener('click', changeWatchedTotal);
     btnToQueue.addEventListener('click', addToQueue);
 
-
     if (currentlyUser.id) {
       const moviesWatched = currentlyUser.watchedListBaze;
       console.log('moviesWatched', moviesWatched);
+
       moviesWatched.forEach(movie => {
         if (movie.id === movieId) {
           btnToWatched.textContent = 'Remove from Watched';
@@ -75,6 +75,7 @@ function onOpenModal(event) {
 
       const moviesQueue = currentlyUser.queueListBaze;
       console.log('moviesQueue', moviesQueue);
+
       moviesQueue.forEach(movie => {
         if (movie.id === movieId) {
           btnToWatched.textContent = 'Remove from Watched';
@@ -100,19 +101,14 @@ function onOpenModal(event) {
       });
     }
   });
+
   document.body.setAttribute('style', 'overflow:hidden');
 
   async function changeWatchedTotal() {
-///////////////////////////////////////////////////
-  function addToWatched() {
-    btnToWatched.textContent = 'Remove from Watched';
-    btnToWatched.classList.toggle('btn-is-active');
-//////////////////////////////////////////////////
     const obj = JSON.parse(localStorage.getItem('currentFilm'));
     let arrFilmsToWatch = JSON.parse(localStorage.getItem('watchedList')) || [];
 
     const searchId = obj.id;
-
     if (currentlyUser.id) {
       console.log('юзер есть ');
 
@@ -139,7 +135,7 @@ function onOpenModal(event) {
   }
 
   function changeWatchedLocal(arrFilmsToWatch, obj) {
-    // btnToWatched.classList.remove('btn-is-active');
+    btnToWatched.classList.remove('btn-is-active');
 
     console.log(arrFilmsToWatch);
     if (arrFilmsToWatch.find(e => e.id === obj.id)) {
@@ -174,4 +170,8 @@ function onOpenModal(event) {
     }
     localStorage.setItem('queueList', JSON.stringify(arrFilmsToQueue));
   }
+
+  // function addToWatched() {
+  //   btnToWatched.textContent = 'Remove from Watched';
+  //   btnToWatched.classList.toggle('btn-is-active');
 }
