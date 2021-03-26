@@ -1,7 +1,8 @@
 .scroll-up {
   position: fixed;
-  bottom: 150px;
-  right: 40px;
+  display: none;
+  bottom: 190px;
+  right: 20px;
   z-index: 30;
   width: 50px;
   height: 50px;
@@ -14,7 +15,15 @@
   background-position: center;
   background-size: 24px;
   cursor: pointer;
-  display: none;
+
+  @include for-size(tablet) {
+    bottom: 180px;
+    right: 15px;
+  }
+
+  @include for-size(desktop) {
+    right: 40px;
+  }
 }
 
 .scroll-up:hover {

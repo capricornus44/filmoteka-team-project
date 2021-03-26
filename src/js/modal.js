@@ -22,7 +22,10 @@ refs.gallery.addEventListener('click', onOpenModal);
 
 function onOpenModal(event) {
   event.preventDefault();
-  if (event.target === event.currentTarget) {
+  if (
+    event.target === event.currentTarget ||
+    event.target.className === 'watch-trailer-btn'
+  ) {
     return;
   }
 
@@ -58,6 +61,7 @@ function onOpenModal(event) {
     btnToWatched.addEventListener('click', changeWatchedTotal);
     btnToQueue.addEventListener('click', addToQueue);
 
+
     if (currentlyUser.id) {
       const moviesWatched = currentlyUser.watchedListBaze;
       console.log('moviesWatched', moviesWatched);
@@ -82,7 +86,7 @@ function onOpenModal(event) {
       dataLocalWatched.forEach(movie => {
         if (movie.id === movieId) {
           btnToWatched.textContent = 'Remove from Watched';
-          // btnToWatched.classList.add('btn-is-active');
+          btnToWatched.classList.add('btn-is-active');
           return false;
         }
       });
@@ -90,7 +94,7 @@ function onOpenModal(event) {
       dataLocalQueue.forEach(movie => {
         if (movie.id === movieId) {
           btnToQueue.textContent = 'remove from queue';
-          // btnToQueue.classList.add('btn-is-active');
+          btnToQueue.classList.add('btn-is-active');
           return false;
         }
       });
@@ -99,6 +103,11 @@ function onOpenModal(event) {
   document.body.setAttribute('style', 'overflow:hidden');
 
   async function changeWatchedTotal() {
+///////////////////////////////////////////////////
+  function addToWatched() {
+    btnToWatched.textContent = 'Remove from Watched';
+    btnToWatched.classList.toggle('btn-is-active');
+//////////////////////////////////////////////////
     const obj = JSON.parse(localStorage.getItem('currentFilm'));
     let arrFilmsToWatch = JSON.parse(localStorage.getItem('watchedList')) || [];
 
@@ -154,7 +163,7 @@ function onOpenModal(event) {
 
   function addToQueue() {
     btnToQueue.textContent = 'remove from queue';
-    // btnToQueue.classList.add('btn-is-active');
+    btnToQueue.classList.toggle('btn-is-active');
     let arrFilmsToQueue = JSON.parse(localStorage.getItem('queueList')) || [];
     const obj = JSON.parse(localStorage.getItem('currentFilm'));
     if (arrFilmsToQueue.find(e => e.id === obj.id)) {

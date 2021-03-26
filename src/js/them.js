@@ -1,6 +1,6 @@
 const Theme = {
-LIGHT: 'light-theme',
-DARK: 'dark-theme',
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
 };
 
 const refs = {

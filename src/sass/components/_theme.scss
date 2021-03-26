@@ -31,6 +31,16 @@ body.dark-theme .modal {
     border: none;
   }
 }
+body.dark-theme .tui-pagination .tui-page-btn {
+  color: $header-text-color !important;
+}
+body.dark-theme .tui-pagination .tui-page-btn:hover {
+  color: $main-text-color !important;
+}
+
+.dark-theme .sorry_text {
+  color: $header-text-color;
+}
 
 .dark-theme {
   background-color: $background-theme-dark;
@@ -42,6 +52,9 @@ body.dark-theme .modal {
 }
 
 .toggle {
+  position: absolute;
+  top: 5px;
+  right: 20px;
   font-size: 200%;
 }
 .toggle:before {
