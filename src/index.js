@@ -13,4 +13,3 @@ import './firebase/auth';
 import './js/scrollUp';
 import './js/languages';
 import './js/trailer';
-
