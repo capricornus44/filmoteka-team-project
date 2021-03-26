@@ -58,8 +58,8 @@ export const signinWithEmailAndPassword = async (email, password) => {
   } catch (error) {
     console.log('это эррор юзера нет', error);
   }
-  currentlyUser.watchedListBaze = await getWatched();
-  currentlyUser.queueListBaze = await getQueue();
+  // currentlyUser.watchedListBaze = await getWatched();
+  // currentlyUser.queueListBaze = await getQueue();
 };
 
 // выход юзера
