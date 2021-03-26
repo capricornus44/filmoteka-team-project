@@ -55,4 +55,11 @@ footer .container {
   border: none;
   background: none;
   cursor: pointer;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $accent-color;
+    transition: linear 0.07s;
+  }
 }
