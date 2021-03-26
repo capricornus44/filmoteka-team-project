@@ -51,6 +51,8 @@
   "dependencies": {
     "basiclightbox": "^5.0.4",
     "core-js": "^3.6.5",
+    "firebase": "^8.3.1",
+    "firebaseui": "^4.8.0",
     "handlebars": "^4.7.6",
     "tui-pagination": "^3.4.0"
   }

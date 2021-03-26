@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Kinoman</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Kinoman</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
-</head>
-
-<body>
-  <header class="header-start">
-    <div class="container"></div>
-    <span class="toggle"></span>
-  </header>
-  <main>
-    <div class="container" id="content-js">
-      <!-- dynamic content template -->
-    </div>
-    <div class="tui-pagination" id="pagination"></div>
-  </main>
-
+  <body>
+    <header class="header-start">
+      <div class="container"></div>
+      <span class="toggle"></span>
+      <div class="lang-switcher">
+        <input
+          class="checkbox"
+          type="checkbox"
+          name="lang-switcher"
+          value="lang"
+          id="check"
+        />
+        <label for="check" class="checkbox-label"></label>
+      </div>
+    </header>
+    <!-- dynamic content template -->
+    <main>
+      <section class="section-main">
+        <div class="container" id="content-js"></div>
+        <div class="tui-pagination" id="pagination"></div>
+      </section>
+    </main>
   <footer>
     <!-- dynamic footer template -->
   </footer>
@@ -29,5 +41,5 @@
   <!-- ScrollUp -->
   <a id="scroll-up" class="scroll-up" title="top"></a>
 </body>
-
 </html>
+

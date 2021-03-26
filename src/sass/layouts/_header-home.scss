@@ -52,6 +52,7 @@ header .container {
 .header-logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .header-logo-icon {
@@ -90,6 +91,7 @@ header .container {
   color: $header-text-color;
   padding-left: 0px;
   padding-right: 0px;
+  cursor: pointer;
 
   &:first-child {
     margin-right: 39px;
