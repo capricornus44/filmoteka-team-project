@@ -36,20 +36,16 @@ pagination.on('beforeMove', async evt => {
   backToTop();
   apiService.page = evt.page;
   const movies = await apiService.fetch();
-  console.log(movies);
   printFilmography(movies.results);
 });
 
 let totalItemsFromServer;
 
 const init = async total => {
-  if (!total && !totalItemsFromServer) {
+  if (total === undefined && !totalItemsFromServer)
     totalItemsFromServer = await apiService.fetch();
-  }
 
-  if (!total) {
-    total = totalItemsFromServer.total_results;
-  }
+  if (total === undefined) total = totalItemsFromServer.total_results;
 
   pagination.setTotalItems(total);
   pagination.reset();

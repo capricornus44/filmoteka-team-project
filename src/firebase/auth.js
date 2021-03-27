@@ -30,13 +30,13 @@ export const signupWithEmailAndPassword = async (email, password, name) => {
     const user = await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password);
-    currentlyUserID = await firebase.auth().currentUser.uid;
+    currentlyUser.id = await firebase.auth().currentUser.uid;
     console.log('Создан юзер с ID ', currentlyUserID);
-    await firebase.database().ref(`/users/${currentlyUserID}/info`).set({
+    await firebase.database().ref(`/users/${currentlyUser.id}/info`).set({
       name,
     });
 
-    localStorage.setItem('currentlyUser', currentlyUserID);
+    localStorage.setItem('currentlyUser', currentlyUser.id);
 
     return user;
   } catch (error) {
@@ -54,7 +54,7 @@ export const signinWithEmailAndPassword = async (email, password) => {
     console.log('В систему зашел юзер с ID ', currentlyUser.id);
     localStorage.setItem('currentlyUser', currentlyUser.id);
 
-    // return user;
+    return user;
   } catch (error) {
     console.log('это эррор юзера нет', error);
   }
@@ -64,12 +64,12 @@ export const signinWithEmailAndPassword = async (email, password) => {
 
 // выход юзера
 export const signOut = async () => {
-  const userNow = await firebase.auth().currentUser;
+  currentlyUser.id = await firebase.auth().currentUser.uid;
   await firebase.auth().signOut();
-  const userNow1 = await firebase.auth().currentUser;
 
-  console.log('вышел юзер с ID ', userNow.uid, 'Текущий юзер ', userNow1);
+  console.log('вышел юзер с ID ', currentlyUser.id);
   localStorage.setItem('currentlyUser', '');
+  currentlyUser.id = '';
 };
 
 // получение имени юзера

@@ -15,6 +15,7 @@ export async function onSearch(event) {
   event.preventDefault();
   const form = event.currentTarget;
   apiService.query = form.elements.query.value;
+  form.elements.query.value = '';
 
   clearFilmography();
 
@@ -32,6 +33,7 @@ export async function onSearch(event) {
 export async function fetchFilmography() {
   const movies = await apiService.fetch(apiService.query);
   printFilmography(movies.results);
+  pagination.reset(movies.total_results);
 }
 
 export function clearFilmography() {
@@ -40,6 +42,4 @@ export function clearFilmography() {
 
 export function printFilmography(movies) {
   refs.gallery.innerHTML = cardMurkup(movies);
-  console.log(movies);
-  pagination.reset(movies.length);
 }
