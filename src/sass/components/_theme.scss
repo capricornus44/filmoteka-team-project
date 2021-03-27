@@ -45,21 +45,23 @@
 .dark-theme .auth-nav-registr {
   background: linear-gradient($background-theme-dark, $bg-theme-dark-footer);
 
-  .btn-box-get-out .auth-send {
-    color: $header-text-color;
-  }
-
-  .input-box-registr .input-registr {
-    color: $header-text-color;
-    border-bottom: 0.5px solid $header-text-color;
-
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+  .form-reg {
+    .auth-send {
+      color: $header-text-color;
     }
-  }
 
-  .registr-box .auth-get {
-    color: $header-text-color;
+    .input-registr {
+      color: $header-text-color;
+      border-bottom: 0.5px solid $header-text-color;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .auth-get {
+      color: $header-text-color;
+    }
   }
 }
 
