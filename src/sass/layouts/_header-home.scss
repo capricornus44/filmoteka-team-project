@@ -142,3 +142,8 @@ header .container {
   display: flex;
   justify-content: space-between;
 }
+
+.errorRequest {
+  margin-top: 10px;
+  color: $err-text-color;
+}

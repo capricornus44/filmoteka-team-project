@@ -37,6 +37,8 @@ const watchedBtn = document.querySelector('#watched');
 const searchForm = document.querySelector('.header-search-form');
 const searchBlock = document.querySelector('#header-search-form');
 const queueBtn = document.querySelector('#queue');
+export const errorRequest = document.querySelector('#requst-error');
+const input = document.querySelector('.header-search-form-input');
 // const searchBtn = document.querySelector('#search');
 
 // ++++
@@ -45,6 +47,7 @@ homeBtn.addEventListener('click', openHome);
 myLibraryBtn.addEventListener('click', openLibraryWatched);
 watchedBtn.addEventListener('click', openWatchedFilms);
 searchForm.addEventListener('submit', onSearch);
+input.addEventListener('input', onInput);
 
 // ----
 
@@ -147,3 +150,9 @@ function openSearchForm(event) {
 }
 
 function searchFilm(ev) {}
+
+function onInput(event) {
+  if (event.target) {
+    errorRequest.classList.add('is-hidden');
+  }
+}
