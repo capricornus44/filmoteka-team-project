@@ -3,6 +3,7 @@ export const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
 export let language = 'en';
 export let GENRES = [];
+
 export default class ApiService {
   constructor() {
     this.totalPages;
@@ -141,3 +142,5 @@ export default class ApiService {
     this.page -= 1;
   }
 }
+
+export const apiService = new ApiService();

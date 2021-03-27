@@ -3,7 +3,7 @@ import logo from '../images/sprite.svg';
 import pagination from './pagination';
 import smile from '../images/sorry.png';
 import searchCard from '../templates/searchCard.hbs';
-import ApiService, { GENRES } from './servise/api';
+import { apiService, GENRES } from './servise/api';
 
 import refs from './references';
 import {
@@ -57,6 +57,9 @@ queueBtn.addEventListener('click', openQueueFilms);
 function openHome() {
   changeHeaderHome();
   clearFilmography();
+  apiService.query = '';
+  apiService.pageNum = 1;
+  searchForm.elements.query.value = '';
   fetchFilmography();
   pagination.reset();
 }

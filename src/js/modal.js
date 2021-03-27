@@ -1,6 +1,6 @@
 import modalCardTpl from '../templates/modalCard.hbs';
 
-import ApiService from './servise/api';
+import { apiService } from './servise/api';
 import refs from './references';
 
 import * as basicLightbox from 'basiclightbox';
@@ -16,7 +16,7 @@ import {
 let btnToWatched = null;
 let btnToQueue = null;
 
-const apiService = new ApiService();
+// const apiService = new ApiService();
 
 refs.gallery.addEventListener('click', onOpenModal);
 

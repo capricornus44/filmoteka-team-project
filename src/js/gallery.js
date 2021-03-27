@@ -1,10 +1,10 @@
 import cardMurkup from '../templates/filmGallery.hbs';
-import ApiService, { genres } from './servise/api';
+import { apiService, genres } from './servise/api';
 import refs from './references';
 import pagination from './pagination';
 import { errorRequest } from './header';
 
-const apiService = new ApiService();
+// const apiService = new ApiService();
 
 export default async function startPage() {
   await apiService.fetchGenre();
@@ -15,7 +15,7 @@ export async function onSearch(event) {
   event.preventDefault();
   const form = event.currentTarget;
   apiService.query = form.elements.query.value;
-  form.elements.query.value = '';
+  // form.elements.query.value = '';
 
   clearFilmography();
 
@@ -30,6 +30,7 @@ export async function onSearch(event) {
 }
 
 export async function fetchFilmography() {
+  console.log(fetchFilmography);
   const movies = await apiService.fetch(apiService.query);
   printFilmography(movies.results);
   pagination.reset(movies.total_results);
