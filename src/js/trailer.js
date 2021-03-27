@@ -32,6 +32,7 @@ function fetchTrailerFilm(movieId) {
 }
 
 refs.gallery.addEventListener('click', onPlayTrailer);
+// modalBtnTrailer.addEventListener('click', onPlayTrailerModal);
 
 function onPlayTrailer(event) {
   event.preventDefault();
@@ -47,19 +48,14 @@ function onPlayTrailer(event) {
   return;
 }
 
-// function toModalTrailer(youtubeVideo) {
-//   const modalBox = document.querySelector('.basicLightbox--iframe');
-//   modalBox.insertAdjacentHTML(
-//     'afterbegin',
-//     `<button
-//         type="button"
-//         class="lightbox__button"
-//         data-action="close-lightbox"
-//         ></button>
-//     `,
-//   );
-//   const modalCloseBtn = document.querySelector(
-//     '[data-action="close-lightbox"]',
-//   );
-//   modalCloseBtn.addEventListener('click', () => youtubeVideo.close());
-// }
+export default function onPlayTrailerModal(event) {
+  console.log(event.currentTarget);
+  const trailerKey = event.currentTarget.dataset.key;
+  const trailer = basicLightbox
+    .create(
+      `
+  <iframe width="1000" height="600" src='https://www.youtube.com/embed/${trailerKey}'frameborder="0" allowfullscreen class="trailer"></iframe>
+`,
+    )
+    .show();
+}

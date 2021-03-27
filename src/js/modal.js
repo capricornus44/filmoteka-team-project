@@ -5,6 +5,7 @@ import refs from './references';
 
 import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
+import onPlayTrailerModal from './trailer';
 
 import {
   searchIdInBaze,
@@ -54,6 +55,9 @@ function onOpenModal(event) {
         onClose: () => document.body.removeAttribute('style'),
       })
       .show();
+
+    const modalBtnTrailer = document.querySelector('.watch-trailer-btn-modal');
+    modalBtnTrailer.addEventListener('click', onPlayTrailerModal);
 
     btnToWatched = document.querySelector('#watched_modal');
     btnToQueue = document.querySelector('#queue_modal');

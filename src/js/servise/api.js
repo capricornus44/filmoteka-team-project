@@ -77,13 +77,15 @@ export default class ApiService {
   }
 
   async fetchMovieById(movieId) {
-    this.url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`; // Получаем объект movie
+    this.url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos`; // Получаем объект movie
 
     try {
       const response = await fetch(this.url);
       const movie = await response.json();
 
       this.url = '';
+      movie.trailerKey = movie.videos.results[0].key;
+      //todo
 
       return movie;
     } catch (error) {
