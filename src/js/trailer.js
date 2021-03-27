@@ -1,11 +1,11 @@
-import ApiService from './servise/api';
+import { apiService } from './servise/api';
 import refs from './references';
 import { API_KEY } from './servise/api';
 import { BASE_URL } from './servise/api';
 import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
 
-const apiService = new ApiService();
+// const apiService = new ApiService();
 
 function fetchTrailerFilm(movieId) {
   return fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`)
@@ -46,3 +46,20 @@ function onPlayTrailer(event) {
   }
   return;
 }
+
+// function toModalTrailer(youtubeVideo) {
+//   const modalBox = document.querySelector('.basicLightbox--iframe');
+//   modalBox.insertAdjacentHTML(
+//     'afterbegin',
+//     `<button
+//         type="button"
+//         class="lightbox__button"
+//         data-action="close-lightbox"
+//         ></button>
+//     `,
+//   );
+//   const modalCloseBtn = document.querySelector(
+//     '[data-action="close-lightbox"]',
+//   );
+//   modalCloseBtn.addEventListener('click', () => youtubeVideo.close());
+// }

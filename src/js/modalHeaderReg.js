@@ -15,11 +15,11 @@ openModBtnHeader.addEventListener('click', onBtn);
 
 function onBtn(event) {
   event.preventDefault();
-  basicLightbox
-    .create(authModal(), {
-      onClose: () => document.body.removeAttribute('style'),
-    })
-    .show();
+  const basicLightboxInstance = basicLightbox.create(authModal(), {
+    onClose: () => document.body.removeAttribute('style'),
+  });
+
+  basicLightboxInstance.show();
   document.body.setAttribute('style', 'overflow:hidden');
 
   document.querySelector('.sign-in').addEventListener('click', getAuthent);
@@ -32,6 +32,7 @@ function onBtn(event) {
     const user = await signinWithEmailAndPassword(emailData, passwordData);
     ev.target.parentNode.email.value = '';
     ev.target.parentNode.password.value = '';
+    basicLightboxInstance.close();
   }
 
   document.querySelector('#auth-send').addEventListener('click', openName);
