@@ -38,6 +38,9 @@ p {
 }
 
 body {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 77px;
   margin: 0;
 
   font-family: 'Roboto', sans-serif;

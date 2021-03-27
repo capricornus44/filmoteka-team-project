@@ -131,7 +131,7 @@ function shouQueueHeader() {
 
 function createMarkupLibrary() {
   const markup = `<div class="library">
-      <h3 class="sorry_text">Sorry, you haven't added anything here yet.</h3>
+      <h3 class="sorry_text">Sorry, you haven't added anything here yet</h3>
       <img class="sorry_img" src="./${smile}" alt="smile">
       </div>`;
   refs.gallery.insertAdjacentHTML('beforeend', markup);
