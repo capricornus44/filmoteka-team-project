@@ -1,19 +1,20 @@
 <div id='auth-div' class="auth-nav-registr">
     {{!-- <form action="" id='auth-form' name='auth' class=""> --}}
-        <div class="btn-box-get-out auth-nav-registr-form">
+        {{!-- <div class="btn-box-get-out auth-nav-registr-form"> --}}
 
-        </div>
+        {{!-- </div> --}}
         {{!-- <div class="registr-box"> --}}
             {{!-- <div class="input-box-registr"> --}}
 
-                <form action="" id='auth-form' name='auth'>
+                <form action="" id='auth-form' name='auth' class="form-reg">
+                    <button type="submit" id='auth-send' class="btn-base auth-send">зарегистрироваться</button>
+                    
                     <input type="text" name="name" id='name-imput' placeholder="Login name"
                         class="input-registr is-hidden">
                     <input type="text" name="email" placeholder="Email" class="input-registr">
                     <input type="text" name='password' placeholder="Password" class="input-registr">
 
                     <button type="submit" id='auth-get' class="btn-base auth-get sign-in">войти</button>
-                    <button type="submit" id='auth-send' class="btn-base auth-send">зарегистрироваться</button>
                 </form>
 
                 {{!--
