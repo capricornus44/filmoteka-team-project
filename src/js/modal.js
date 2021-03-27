@@ -17,8 +17,6 @@ import {
 let btnToWatched = null;
 let btnToQueue = null;
 
-// const apiService = new ApiService();
-
 refs.gallery.addEventListener('click', onOpenModal);
 
 function onOpenModal(event) {

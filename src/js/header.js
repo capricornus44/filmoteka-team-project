@@ -135,7 +135,7 @@ function createMarkupLibrary() {
       <img class="sorry_img" src="./${smile}" alt="smile">
       </div>`;
   refs.gallery.insertAdjacentHTML('beforeend', markup);
-  // document.querySelector('#pagination').innerHTML = '';
+  document.querySelector('#pagination').innerHTML = '';
 }
 
 // логика на поиска

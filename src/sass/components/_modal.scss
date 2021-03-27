@@ -12,6 +12,8 @@
   background-color: $header-text-color;
 
   @include for-size(tablet) {
+    display: flex;
+    justify-content: space-between;
     max-width: 618px;
     // margin-top: 20px;
     // margin-bottom: 20px;
@@ -19,8 +21,6 @@
     padding-right: 30px;
     padding-top: 40px;
     padding-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
     overflow: auto;
   }
 

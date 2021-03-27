@@ -4,8 +4,6 @@ import refs from './references';
 import pagination from './pagination';
 import { errorRequest } from './header';
 
-// const apiService = new ApiService();
-
 export default async function startPage() {
   await apiService.fetchGenre();
   fetchFilmography();
@@ -30,7 +28,6 @@ export async function onSearch(event) {
 }
 
 export async function fetchFilmography() {
-  console.log(fetchFilmography);
   const movies = await apiService.fetch(apiService.query);
   printFilmography(movies.results);
   pagination.reset(movies.total_results);
