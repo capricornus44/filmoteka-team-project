@@ -45,7 +45,7 @@
   }
   &:hover,
   &:focus {
-    box-shadow: 0px -3px 18px 0px $accent-color;
+    box-shadow: 0px -3px 18px 0px $color-text-modal;
     transition: 300ms;
     transform: scale(1.05);
   }
@@ -92,11 +92,11 @@
   }
 }
 .student-img3 {
-  background-image: url(/images/antonzavalnuk.jpg);
+  background-image: url(/images/tetyanaredka.png);
   &:hover,
   &:focus {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-      url(/images/antonzavalnuk.jpg);
+      url(/images/tetyanaredka.png);
   }
 }
 .student-img4 {
@@ -113,6 +113,15 @@
   &:focus {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
       url(/images/paveldenisov.jpg);
+  }
+}
+
+.student-img6 {
+  background-image: url(/images/ulantemirbekov.png);
+  &:hover,
+  &:focus {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+      url(/images/ulantemirbekov.png);
   }
 }
 
