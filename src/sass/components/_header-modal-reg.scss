@@ -21,7 +21,7 @@
 .auth-nav-registr {
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 20px;
   width: 85vw;
   height: 55vh;
 
@@ -39,7 +39,7 @@
 
     .auth-send {
       margin-left: auto;
-      width: 180px;
+      width: 100px;
       color: $main-text-color;
       border: none;
 
@@ -52,7 +52,7 @@
 
     .input-registr {
       padding: 5px;
-      width: 200px;
+      width: 100%;
 
       border-top: none;
       border-right: none;
@@ -88,22 +88,4 @@
       }
     }
   }
-
-  // .btn-box-get-out {
-  //   display: flex;
-  //   justify-content: center;
-  //   margin-bottom: 50px;
-
-  //   @include for-size(mobile) {
-  //     justify-content: flex-end;
-  //   }
-
-  //
-  // }
-
-  // .registr-box {
-  //   display: flex;
-  //   flex-direction: column;
-
-  // }
 }

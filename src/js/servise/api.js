@@ -1,7 +1,7 @@
 export const API_KEY = '989c90c59500ad26e3fa4e26d53d2bd3';
 export const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
-export let language = 'ru';
+export let language = 'en';
 export let GENRES = [];
 export default class ApiService {
   constructor() {
