@@ -5,6 +5,7 @@ import { printFilmography } from './gallery';
 import { backToTop } from './scrollUp';
 
 const apiService = new ApiService();
+
 const container = document.getElementById('pagination');
 
 const pagination = new Pagination(container, {
@@ -41,13 +42,10 @@ pagination.on('beforeMove', async evt => {
 let totalItemsFromServer;
 
 const init = async total => {
-  if (!total && !totalItemsFromServer) {
+  if (total === undefined && !totalItemsFromServer)
     totalItemsFromServer = await apiService.fetch();
-  }
 
-  if (!total) {
-    total = totalItemsFromServer.total_results;
-  }
+  if (total === undefined) total = totalItemsFromServer.total_results;
 
   pagination.setTotalItems(total);
   pagination.reset();

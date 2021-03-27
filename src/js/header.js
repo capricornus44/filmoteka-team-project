@@ -13,6 +13,8 @@ import {
   onSearch,
 } from './gallery';
 
+import { currentlyUser } from '../firebase/auth';
+
 import { getWatched } from '../firebase/auth';
 
 loadStartPage({ headerInfo, logo });
@@ -23,23 +25,31 @@ function loadStartPage({ headerInfo, logo }) {
 }
 
 // открытие библиотеки и houme
+// ++++
 const headerLogo = document.querySelector('#header-logo');
 const homeBtn = document.querySelector('#home');
 const myLibraryBtn = document.querySelector('#my-library');
 const myLibraryNav = document.querySelector('#lbr-buttons');
+const watchedBtn = document.querySelector('#watched');
+
+// ----
+
 const searchForm = document.querySelector('.header-search-form');
 const searchBlock = document.querySelector('#header-search-form');
-const watchedBtn = document.querySelector('#watched');
 const queueBtn = document.querySelector('#queue');
-const searchBtn = document.querySelector('#search');
+// const searchBtn = document.querySelector('#search');
 
-searchForm.addEventListener('submit', onSearch);
+// ++++
 headerLogo.addEventListener('click', openHome);
 homeBtn.addEventListener('click', openHome);
 myLibraryBtn.addEventListener('click', openLibraryWatched);
 watchedBtn.addEventListener('click', openWatchedFilms);
+searchForm.addEventListener('submit', onSearch);
+
+// ----
+
 queueBtn.addEventListener('click', openQueueFilms);
-searchBtn.addEventListener('click', openSearchForm);
+// searchBtn.addEventListener('click', openSearchForm);
 
 function openHome() {
   changeHeaderHome();
@@ -54,16 +64,22 @@ function openLibraryWatched() {
 }
 
 async function openWatchedFilms() {
-  const filmList = await getWatched(); //получение данных из базы
-  shouWatchedHeader();
   clearFilmography();
-  const data = JSON.parse(localStorage.getItem('watchedList'));
+  shouWatchedHeader();
+  let filmList = [];
+  if (currentlyUser.id) {
+    filmList = await getWatched(); //получение данных из базы
+  } else {
+    filmList = JSON.parse(localStorage.getItem('watchedList'));
+  }
+
   printFilmography(filmList);
-  if (!data.length) {
+
+  if (!filmList.length) {
     createMarkupLibrary();
     return;
   }
-  pagination.reset(data.length);
+  pagination.reset(filmList.length);
 }
 
 function openQueueFilms() {
@@ -127,6 +143,4 @@ function openSearchForm(event) {
   searchFormBtn.addEventListener('click', searchFilm);
 }
 
-function searchFilm(ev) {
-  ev.preventDefault();
-}
+function searchFilm(ev) {}

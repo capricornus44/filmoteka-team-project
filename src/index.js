@@ -8,7 +8,6 @@ import './js/modal';
 import './js/pagination';
 import './js/them';
 import './js/spinner';
-import './js/authMetods';
 import './firebase/auth';
 import './js/scrollUp';
 import './js/languages';
