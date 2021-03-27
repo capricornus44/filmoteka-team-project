@@ -21,9 +21,8 @@
 .auth-nav-registr {
   display: flex;
   justify-content: center;
-  padding: 20px;
   width: 85vw;
-  height: 55vh;
+  min-height: 30vh;
 
   background: linear-gradient($header-text-color, $color-text-modal);
 
@@ -35,11 +34,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 10px;
     width: 100%;
+    height: 100%;
 
     .auth-send {
       margin-left: auto;
-      width: 100px;
+      padding: 0;
+      width: 60px;
       color: $main-text-color;
       border: none;
 
@@ -47,6 +49,7 @@
       &:focus {
         transform: scale(1.05);
         color: $active-btn-color;
+        outline: none;
       }
     }
 
@@ -61,7 +64,11 @@
       background: transparent;
 
       &::placeholder {
-        color: $main-text-color;
+        color: rgba($color: #000000, $alpha: 0.5);
+      }
+
+      &:focus {
+        outline: none;
       }
     }
     .input-registr:not(:first-child) {
@@ -76,6 +83,7 @@
       width: 100px;
       color: $main-text-color;
       border: none;
+      outline: none;
 
       @include for-size(desktop) {
         margin-top: 40px;
