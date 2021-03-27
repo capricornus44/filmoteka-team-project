@@ -5,8 +5,6 @@ import { BASE_URL } from './servise/api';
 import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
 
-// const apiService = new ApiService();
-
 function fetchTrailerFilm(movieId) {
   return fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`)
     .then(response => response.json())
@@ -32,7 +30,6 @@ function fetchTrailerFilm(movieId) {
 }
 
 refs.gallery.addEventListener('click', onPlayTrailer);
-// modalBtnTrailer.addEventListener('click', onPlayTrailerModal);
 
 function onPlayTrailer(event) {
   event.preventDefault();

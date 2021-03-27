@@ -18,12 +18,6 @@ export default class ApiService {
     this.genres = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
     this.lenguage = 'ru';
   }
-  // async fetchLenguage() {
-  //   this.url = `${BASE_URL}/movie/list?api_key=${API_KEY}&language=${language}`;
-  //   const response = await fetch(this.url);
-  //   const data = await response.json();
-  //   console.log(data);
-  // }
 
   async fetchGenre() {
     this.url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${language}`;
