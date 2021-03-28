@@ -3,7 +3,7 @@ import logo from '../images/sprite.svg';
 import pagination from './pagination';
 import smile from '../images/sorry.png';
 import searchCard from '../templates/searchCard.hbs';
-import ApiService, { GENRES } from './servise/api';
+import { apiService, GENRES } from './servise/api';
 
 import refs from './references';
 import {
@@ -37,7 +37,9 @@ const queueBtn = document.querySelector('#queue');
 
 const searchForm = document.querySelector('.header-search-form');
 const searchBlock = document.querySelector('#header-search-form');
-
+const queueBtn = document.querySelector('#queue');
+export const errorRequest = document.querySelector('#requst-error'); //message error request
+const input = document.querySelector('.header-search-form-input');
 // const searchBtn = document.querySelector('#search');
 
 // ++++
@@ -47,6 +49,7 @@ myLibraryBtn.addEventListener('click', openLibraryWatched);
 watchedBtn.addEventListener('click', openWatchedFilms);
 queueBtn.addEventListener('click', openQueueFilms);
 searchForm.addEventListener('submit', onSearch);
+input.addEventListener('input', onInput);
 
 // ----
 
@@ -55,6 +58,9 @@ searchForm.addEventListener('submit', onSearch);
 function openHome() {
   changeHeaderHome();
   clearFilmography();
+  apiService.query = '';
+  apiService.pageNum = 1;
+  searchForm.elements.query.value = '';
   fetchFilmography();
   pagination.reset();
 }
@@ -78,7 +84,7 @@ async function openWatchedFilms() {
     console.log('отаботал юзер');
     console.log(filmList);
   } else {
-    filmList = JSON.parse(localStorage.getItem('watchedList'));
+    filmList = JSON.parse(localStorage.getItem('watchedList')) || []; //ghbkjhhfkjshfkjhdskjfhjkhk
     console.log('отаботал не юзер');
   }
   console.log('это список фильмов', Boolean(filmList));
@@ -103,7 +109,7 @@ async function openQueueFilms() {
 
     console.log('отаботал юзер');
   } else {
-    filmList = JSON.parse(localStorage.getItem('queueList'));
+    filmList = JSON.parse(localStorage.getItem('queueList')) || []; // add empty array
     console.log('отаботал не юзер');
   }
 
@@ -146,13 +152,13 @@ function shouQueueHeader() {
   queueBtn.classList.add('btn-is-active');
 }
 
-function createMarkupLibrary() {
+export function createMarkupLibrary() {
   const markup = `<div class="library">
-      <h3 class="sorry_text">Sorry, you haven't added anything here yet.</h3>
+      <h3 class="sorry_text">Sorry, you haven't added anything here yet</h3>
       <img class="sorry_img" src="./${smile}" alt="smile">
       </div>`;
   refs.gallery.insertAdjacentHTML('beforeend', markup);
-  // document.querySelector('#pagination').innerHTML = '';
+  document.querySelector('#pagination').innerHTML = '';
 }
 
 export function welcomeUser(currentlyUser) {
@@ -173,3 +179,9 @@ function openSearchForm(event) {
 }
 
 function searchFilm(ev) {}
+
+function onInput(event) {
+  if (event.target) {
+    errorRequest.classList.add('is-hidden');
+  }
+}

@@ -1,7 +1,3 @@
-// .basicLightbox {
-//   overflow: auto;
-// }
-
 .footer-modal {
   overflow: auto;
   width: 320px;
@@ -28,12 +24,11 @@
 .student {
   overflow: hidden;
   position: relative;
-  height: 45vh;
+  height: 40vh;
   margin-left: 40px;
   margin-top: 40px;
   flex-basis: calc(100% / 1 - 50px);
   border-radius: 5%;
-  background-image: url(/images/bcg-lbr-mob.jpg);
   background-size: cover;
 
   @include for-size(tablet) {
@@ -45,7 +40,7 @@
   }
   &:hover,
   &:focus {
-    box-shadow: 0px -3px 18px 0px $accent-color;
+    box-shadow: 0px -3px 18px 0px $color-text-modal;
     transition: 300ms;
     transform: scale(1.05);
   }
@@ -75,45 +70,23 @@
   }
 }
 
-.student-img1 {
-  background-image: url(/images/antonzavalnuk.jpg);
-  &:hover,
-  &:focus {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-      url(/images/antonzavalnuk.jpg);
-  }
+.student-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.student-img2 {
-  background-image: url(/images/aleksandrkasyan.png);
-  &:hover,
-  &:focus {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-      url(/images/aleksandrkasyan.png);
-  }
-}
-.student-img3 {
-  background-image: url(/images/antonzavalnuk.jpg);
-  &:hover,
-  &:focus {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-      url(/images/antonzavalnuk.jpg);
-  }
-}
-.student-img4 {
-  background-image: url(/images/denisdanielyan.jpg);
-  &:hover,
-  &:focus {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-      url(/images/denisdanielyan.jpg);
-  }
-}
-.student-img5 {
-  background-image: url(/images/paveldenisov.jpg);
-  &:hover,
-  &:focus {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-      url(/images/paveldenisov.jpg);
-  }
+
+.student:hover::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  opacity: 0.8;
 }
 
 .student-name {

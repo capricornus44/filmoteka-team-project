@@ -1,8 +1,9 @@
 export const API_KEY = '989c90c59500ad26e3fa4e26d53d2bd3';
 export const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
-export let language = 'ru';
+export let language = 'en';
 export let GENRES = [];
+
 export default class ApiService {
   constructor() {
     this.totalPages;
@@ -17,12 +18,6 @@ export default class ApiService {
     this.genres = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
     this.lenguage = 'ru';
   }
-  // async fetchLenguage() {
-  //   this.url = `${BASE_URL}/movie/list?api_key=${API_KEY}&language=${language}`;
-  //   const response = await fetch(this.url);
-  //   const data = await response.json();
-  //   console.log(data);
-  // }
 
   async fetchGenre() {
     this.url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${language}`;
@@ -76,13 +71,15 @@ export default class ApiService {
   }
 
   async fetchMovieById(movieId) {
-    this.url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`; // Получаем объект movie
+    this.url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos`; // Получаем объект movie
 
     try {
       const response = await fetch(this.url);
       const movie = await response.json();
 
       this.url = '';
+      movie.trailerKey = movie.videos.results[0].key;
+      //todo
 
       return movie;
     } catch (error) {
@@ -141,3 +138,5 @@ export default class ApiService {
     this.page -= 1;
   }
 }
+
+export const apiService = new ApiService();

@@ -12,6 +12,8 @@
   background-color: $header-text-color;
 
   @include for-size(tablet) {
+    display: flex;
+    justify-content: space-between;
     max-width: 618px;
     // margin-top: 20px;
     // margin-bottom: 20px;
@@ -19,8 +21,6 @@
     padding-right: 30px;
     padding-top: 40px;
     padding-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
     overflow: auto;
   }
 
@@ -66,7 +66,7 @@
   line-height: 1.15;
   margin-bottom: 20px;
 
-  .watch-trailer-btn {
+  .watch-trailer-btn-modal {
     display: inline-block;
     vertical-align: middle;
     width: 36px;
@@ -154,30 +154,43 @@
   margin-bottom: 20px;
 }
 
-// .btn_items {
-//   display: flex;
-//   justify-content: space-between;
-//   @include for-size(desktop) {
-//     justify-content: flex-start;
-//   }
-// }
+.btn_items {
+  display: flex;
+  justify-content: space-between;
+  @include for-size(desktop) {
+    justify-content: flex-start;
+  }
+}
 
-// .btn_items > .btn-base {
-//   margin-right: 15px;
-// }
+.btn_items > .btn-base {
+  margin-right: 15px;
+}
 
-// .btn_items > .btn-base:last-child {
-//   margin-right: 0;
-// }
+.btn_items > .btn-base:last-child {
+  margin-right: 0;
+}
 
-// .btn_items > .btn-base {
-//   color: $main-text-color;
-//   border: 1px solid $main-text-color;
-//   outline: none;
-// }
+.btn_items > .btn-base {
+  color: $main-text-color;
+  border: 1px solid $main-text-color;
+  outline: none;
+}
 
-// .btn_items > .btn-base.btn-is-active {
-//   color: $header-text-color;
-//   border: none;
-//   outline: $accent-color;
-// }
+.btn_items > .btn-base:hover {
+  outline: none;
+  border: 1px solid $accent-color;
+  color: $header-text-color;
+  background-color: $active-btn-color;
+}
+
+.btn_items > .btn-base.btn-is-active {
+  color: $header-text-color;
+  border: none;
+  outline: $accent-color;
+}
+
+.btn_items > .btn-base.btn-is-active:hover {
+  // color: $main-text-color;
+  border: 1px solid $main-text-color;
+}
+

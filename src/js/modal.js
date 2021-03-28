@@ -1,10 +1,13 @@
 import modalCardTpl from '../templates/modalCard.hbs';
 
-import ApiService from './servise/api';
+import { apiService } from './servise/api';
 import refs from './references';
 
 import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
+import onPlayTrailerModal from './trailer';
+import { printFilmography } from './gallery';
+import { createMarkupLibrary } from './header';
 
 import {
   setNewFilmIntoBaze,
@@ -14,8 +17,6 @@ import {
 
 let btnToWatched = null;
 let btnToQueue = null;
-
-const apiService = new ApiService();
 
 refs.gallery.addEventListener('click', onOpenModal);
 
@@ -53,6 +54,9 @@ function onOpenModal(event) {
       })
       .show();
 
+    const modalBtnTrailer = document.querySelector('.watch-trailer-btn-modal');
+    modalBtnTrailer.addEventListener('click', onPlayTrailerModal);
+
     btnToWatched = document.querySelector('#watched_modal');
     btnToQueue = document.querySelector('#queue_modal');
 
@@ -70,11 +74,12 @@ function onOpenModal(event) {
     }
 
     async function changeWatchedTotal() {
-      btnToWatched.classList.toggle('btn-is-active');
+    const obj = JSON.parse(localStorage.getItem('currentFilm'));
 
-      const obj = JSON.parse(localStorage.getItem('currentFilm'));
-      let arrFilmsToWatch =
-        JSON.parse(localStorage.getItem('watchedList')) || [];
+    let arrFilmsToWatch = JSON.parse(localStorage.getItem('watchedList')) || []; 
+    
+    
+      btnToWatched.classList.toggle('btn-is-active');
 
       console.log(arrFilmsToWatch);
 
@@ -169,6 +174,7 @@ function onOpenModal(event) {
     }
   }
 
+
   //вспомогательная логика на Watched
 
   function addToWatchedInBase(obj) {
@@ -187,7 +193,13 @@ function onOpenModal(event) {
   }
 
   function changeWatchedLocal(arrFilmsToWatch, obj) {
-    if (!arrFilmsToWatch) arrFilmsToWatch = [];
+
+    if (!arrFilmsToWatch) arrFilmsToWatch = []; //for what???????
+
+    btnToWatched.classList.toggle('btn-is-active');
+
+    // console.log(arrFilmsToWatch);
+
     if (arrFilmsToWatch.find(e => e.id === obj.id)) {
       remuveFromWatched(arrFilmsToWatch, obj);
     } else {
@@ -199,12 +211,17 @@ function onOpenModal(event) {
     arrFilmsToWatch.push(obj);
     btnToWatched.textContent = 'Remove from Watched';
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
+    // printFilmography(arrFilmsToWatch);
   }
 
   function remuveFromWatched(arrFilmsToWatch, obj) {
     arrFilmsToWatch = arrFilmsToWatch.filter(movie => movie.id !== obj.id);
     btnToWatched.textContent = 'Add to Watched';
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
+    // printFilmography(arrFilmsToWatch);
+    // if (arrFilmsToWatch.length === 0) {
+    //   createMarkupLibrary();
+    // }
   }
 
   //вспомогательные функции на queue

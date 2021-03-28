@@ -1,19 +1,19 @@
-.light-theme .list-galery {
+body.light-theme .list-galery {
   .card-title {
     color: $main-text-color;
   }
 }
-.dark-theme .list-galery {
+body.dark-theme .list-galery {
   .card-title {
     color: $header-text-color;
   }
 }
-.dark-theme .footer-text {
+body.dark-theme .footer-text {
   color: $header-text-color;
   background-color: $bg-theme-dark-footer;
 }
 
-.dark-theme .modal {
+body.dark-theme .modal {
   background-color: $background-theme-dark;
   color: $header-text-color;
 
@@ -31,43 +31,44 @@
     border: none;
   }
 }
-.dark-theme .tui-pagination .tui-page-btn {
+body.dark-theme .tui-pagination .tui-page-btn {
   color: $header-text-color !important;
 }
-.dark-theme .tui-pagination .tui-page-btn:hover {
+body.dark-theme .tui-pagination .tui-page-btn:hover {
   color: $main-text-color !important;
 }
 
-.dark-theme .sorry_text {
+body.dark-theme .sorry_text {
   color: $header-text-color;
 }
 
-.dark-theme .auth-nav-registr {
+body.dark-theme .auth-nav-registr {
   background: linear-gradient($background-theme-dark, $bg-theme-dark-footer);
 
-  .btn-box-get-out .auth-send {
-    // color: $header-text-color;
-  }
+  .form-reg {
+    .auth-send {
+      color: $header-text-color;
+    }
+    .input-registr {
+      color: $header-text-color;
+      border-bottom: 0.5px solid $header-text-color;
 
-  .input-box-registr .input-registr {
-    color: $header-text-color;
-    border-bottom: 0.5px solid $header-text-color;
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
 
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+    .auth-get {
+      color: $header-text-color;
     }
   }
-
-  // .registr-box .auth-get {
-  //   color: $header-text-color;
-  // }
 }
 
-.dark-theme {
+body.dark-theme {
   background-color: $background-theme-dark;
   transition: 300ms;
 }
-.light-theme {
+body.light-theme {
   background-color: $header-text-color;
   transition: 300ms;
 }

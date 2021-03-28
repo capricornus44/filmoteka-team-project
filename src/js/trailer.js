@@ -1,11 +1,9 @@
-import ApiService from './servise/api';
+import { apiService } from './servise/api';
 import refs from './references';
 import { API_KEY } from './servise/api';
 import { BASE_URL } from './servise/api';
 import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
-
-const apiService = new ApiService();
 
 function fetchTrailerFilm(movieId) {
   return fetch(`${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`)
@@ -45,4 +43,16 @@ function onPlayTrailer(event) {
     fetchTrailerFilm(movieId);
   }
   return;
+}
+
+export default function onPlayTrailerModal(event) {
+  console.log(event.currentTarget);
+  const trailerKey = event.currentTarget.dataset.key;
+  const trailer = basicLightbox
+    .create(
+      `
+  <iframe width="1000" height="600" src='https://www.youtube.com/embed/${trailerKey}'frameborder="0" allowfullscreen class="trailer"></iframe>
+`,
+    )
+    .show();
 }

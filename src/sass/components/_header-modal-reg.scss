@@ -21,9 +21,8 @@
 .auth-nav-registr {
   display: flex;
   justify-content: center;
-  padding: 10px;
   width: 85vw;
-  height: 55vh;
+  min-height: 30vh;
 
   background: linear-gradient($header-text-color, $color-text-modal);
 
@@ -31,42 +30,34 @@
     max-width: 350px;
   }
 
-  .auth-nav-registr-form {
-    width: 100%;
-  }
-
-  .btn-box-get-out {
+  .form-reg {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    margin-bottom: 50px;
-
-    @include for-size(mobile) {
-      justify-content: flex-end;
-    }
+    padding: 10px;
+    width: 100%;
+    height: 100%;
 
     .auth-send {
-      width: 180px;
-      // color: $main-text-color;
+      margin-left: auto;
+      padding: 0;
+      width: 60px;
+      color: $main-text-color;
+
       border: none;
 
       &:hover,
       &:focus {
         transform: scale(1.05);
-        // color: $active-btn-color;
+        color: $active-btn-color;
+        outline: none;
+
       }
     }
-  }
-
-  .input-box-registr {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
 
     .input-registr {
       padding: 5px;
-      width: 200px;
+      width: 100%;
 
       border-top: none;
       border-right: none;
@@ -75,24 +66,26 @@
       background: transparent;
 
       &::placeholder {
-        color: $main-text-color;
+        color: rgba($color: #000000, $alpha: 0.5);
+      }
+
+      &:focus {
+        outline: none;
       }
     }
     .input-registr:not(:first-child) {
       margin-top: 20px;
     }
-  }
-  .registr-box {
-    display: flex;
-    flex-direction: column;
 
     .auth-get {
+      display: block;
       margin-top: 50px;
       margin-right: auto;
       margin-left: auto;
       width: 100px;
       // color: $main-text-color;
       border: none;
+      outline: none;
 
       @include for-size(desktop) {
         margin-top: 40px;
