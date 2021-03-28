@@ -75,6 +75,7 @@ header .container {
 }
 
 .header-nav-form {
+  position: relative;
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -146,4 +147,10 @@ header .container {
 .errorRequest {
   margin-top: 10px;
   color: $err-text-color;
+}
+
+.welcome {
+  position: absolute;
+  top: 30px;
+  right: 0;
 }

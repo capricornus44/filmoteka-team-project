@@ -88,6 +88,7 @@ export const signinWithEmailAndPassword = async (email, password) => {
     } catch (err) {
       currentlyUser.name = 'person with a secret name';
     }
+    console.log(currentlyUser.name);
 
     welcomeUser(currentlyUser.name);
     chandeBtnLog();
@@ -117,7 +118,7 @@ export const getName = async () => {
   const name = await (
     await firebase
       .database()
-      .ref(`/users/${currentlyUser.id}/info`)
+      .ref(`/users/${currentlyUser.id}/info/name`)
       .once('value')
   ).val();
 
