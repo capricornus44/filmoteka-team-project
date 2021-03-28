@@ -24,7 +24,8 @@ function loadStartPage({ headerInfo, logo }) {
   refs.headerContainer.insertAdjacentHTML('beforeend', headerLayout);
 }
 
-// открытие библиотеки и houme
+// library and start pages opening
+
 // ++++
 const headerLogo = document.querySelector('#header-logo');
 const homeBtn = document.querySelector('#home');
@@ -34,13 +35,10 @@ const watchedBtn = document.querySelector('#watched');
 const queueBtn = document.querySelector('#queue');
 
 // ----
-
 const searchForm = document.querySelector('.header-search-form');
 const searchBlock = document.querySelector('#header-search-form');
-// const queueBtn = document.querySelector('#queue');
-export const errorRequest = document.querySelector('#requst-error'); //message error request
+export const errorRequest = document.querySelector('#requst-error');
 const input = document.querySelector('.header-search-form-input');
-// const searchBtn = document.querySelector('#search');
 
 // ++++
 headerLogo.addEventListener('click', openHome);
@@ -52,9 +50,6 @@ searchForm.addEventListener('submit', onSearch);
 input.addEventListener('input', onInput);
 
 // ----
-
-// searchBtn.addEventListener('click', openSearchForm);
-
 function openHome() {
   changeHeaderHome();
   clearFilmography();
@@ -79,15 +74,13 @@ async function openWatchedFilms() {
 
   if (currentlyUser.id) {
     filmList = currentlyUser.watchedListBase;
-    // filmList = await getWatched(); //получение данных из базы
 
-    console.log('отаботал юзер');
-    console.log(filmList);
+    // console.log('отработал юзер');
   } else {
     filmList = JSON.parse(localStorage.getItem('watchedList')) || [];
-    console.log('отаботал не юзер');
+    // console.log('отработал не юзер');
   }
-  console.log('это список фильмов', Boolean(filmList));
+  // console.log('это список фильмов', Boolean(filmList));
   if (!filmList || !filmList.length) {
     createMarkupLibrary();
     return;
@@ -101,19 +94,19 @@ async function openQueueFilms() {
   clearFilmography();
   shouQueueHeader();
   let filmList = [];
-  console.log('это юзер', currentlyUser.id);
+  // console.log('это юзер', currentlyUser.id);
 
   if (currentlyUser.id) {
     filmList = currentlyUser.queueListBaze;
     // filmList = await getQueue(); //получение данных из
 
-    console.log('отаботал юзер');
+    // console.log('отработал юзер');
   } else {
     filmList = JSON.parse(localStorage.getItem('queueList')) || []; // add empty array
-    console.log('отаботал не юзер');
+    // console.log('отработал не юзер');
   }
 
-  console.log('это список фильмов', filmList);
+  // console.log('это список фильмов', filmList);
   if (!filmList || !filmList.length) {
     createMarkupLibrary();
     return;
@@ -132,6 +125,7 @@ function changeHeaderHome() {
   myLibraryNav.classList.remove('header-lbr-buttons');
   searchBlock.classList.remove('is-hidden');
 }
+
 function changeHeaderLibrary() {
   refs.headerBlock.classList.remove('header-start');
   refs.headerBlock.classList.add('header-lbr');
@@ -169,8 +163,7 @@ export function qoodbye() {
   document.querySelector('#user-name').textContent = ``;
 }
 
-// логика на поиска
-
+// Searching logic
 function openSearchForm(event) {
   event.preventDefault();
   const searchCardLayout = searchCard(GENRES);

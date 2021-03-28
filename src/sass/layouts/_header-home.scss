@@ -94,9 +94,11 @@ header .container {
   padding-right: 0px;
   cursor: pointer;
 }
+
 #my-library {
   margin-left: 40px;
 }
+
 .lbr-button-active {
   border-bottom: 3px solid $accent-color;
 }
@@ -104,6 +106,7 @@ header .container {
 .header-search-block {
   text-align: center;
 }
+
 .header-search-form {
   display: flex;
   justify-content: space-between;
@@ -135,6 +138,7 @@ header .container {
   height: 12px;
   width: 12px;
 }
+
 .header-lbr-buttons {
   width: 287px;
   margin: 0 auto;

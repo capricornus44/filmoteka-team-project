@@ -10,6 +10,5 @@ import './js/them';
 import './js/spinner';
 import './firebase/auth';
 import './js/scrollUp';
-import './js/languages';
 import './js/trailer';
 import './js/modalHeaderReg';
