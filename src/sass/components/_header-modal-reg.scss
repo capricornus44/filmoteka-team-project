@@ -1,21 +1,7 @@
 .btn-header-aut {
   position: absolute;
   top: 20px;
-  right: 40%;
-
-  @include for-size(mobile) {
-    right: 25%;
-  }
-  @include for-size(tablet) {
-    right: 15%;
-  }
-  @include for-size(desktop) {
-    right: 10%;
-  }
-
-  & .btn-modal-registr {
-    margin-right: 10px;
-  }
+  right: 50px;
 }
 
 .auth-nav-registr {
@@ -51,7 +37,6 @@
         transform: scale(1.05);
         color: $active-btn-color;
         outline: none;
-
       }
     }
 
@@ -77,19 +62,14 @@
       margin-top: 20px;
     }
 
-    .auth-get {
-      display: block;
-      margin-top: 50px;
+    .btn-mod-header {
+      margin-top: 0;
       margin-right: auto;
       margin-left: auto;
       width: 100px;
-      // color: $main-text-color;
+      color: $main-text-color;
       border: none;
       outline: none;
-
-      @include for-size(desktop) {
-        margin-top: 40px;
-      }
 
       &:hover,
       &:focus {
