@@ -30,6 +30,8 @@
   flex-basis: calc(100% / 1 - 50px);
   border-radius: 5%;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
   @include for-size(tablet) {
     flex-basis: calc(100% / 2 - 50px);
@@ -44,6 +46,30 @@
     transition: 300ms;
     transform: scale(1.05);
   }
+}
+
+.student-img1 {
+  background-image: url(/images/antonzavalnuk.jpg);
+}
+
+.student-img2 {
+  background-image: url(/images/aleksandrkasyan.png);
+}
+
+.student-img3 {
+  background-image: url(/images/tetyanaredka.png);
+}
+
+.student-img4 {
+  background-image: url(/images/denisdanielyan.jpg);
+}
+
+.student-img5 {
+  background-image: url(/images/paveldenisov.jpg);
+}
+
+.student-img6 {
+  background-image: url(/images/ulantemirbekov.png);
 }
 
 .student-float {
