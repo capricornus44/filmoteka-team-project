@@ -87,21 +87,6 @@ export default class ApiService {
     }
   }
 
-  // async fetchTrailerFilm(movieId) {
-  //   this.url = `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}`;
-
-  //   try {
-  //     const response = await fetch(this.url);
-  //     const video = await response.json();
-
-  //     this.url = '';
-
-  //     return video;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
   get query() {
     return this.searchQuery;
   }

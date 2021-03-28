@@ -1,10 +1,12 @@
 .section-main {
   padding-top: 20px;
   padding-bottom: 40px;
+  margin-bottom: 23px;
 
   @include for-size(tablet) {
     padding-top: 30px;
     padding-bottom: 60px;
+    margin-bottom: 0;
   }
 }
 

@@ -22,13 +22,10 @@ refs.gallery.addEventListener('click', onOpenModal);
 
 function onOpenModal(event) {
   event.preventDefault();
-  if (
-    event.target === event.currentTarget ||
-    event.target.className === 'watch-trailer-btn'
-  )
-    return;
+  if (event.target.className !== 'card-picture') return;
 
   const movieId = event.target.closest('li').dataset.id;
+  console.log(movieId);
 
   let dataLocalWatched = [];
 
