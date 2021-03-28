@@ -72,11 +72,9 @@ function openLibraryWatched() {
 async function openWatchedFilms() {
   clearFilmography();
   shouWatchedHeader();
-  let filmList = [];
+  let filmList = JSON.parse(localStorage.getItem('watchedList')) || [];
   if (currentlyUser.id) {
     filmList = await getWatched(); //получение данных из базы
-  } else {
-    filmList = JSON.parse(localStorage.getItem('watchedList'));
   }
 
   printFilmography(filmList);
@@ -91,7 +89,8 @@ async function openWatchedFilms() {
 function openQueueFilms() {
   shouQueueHeader();
   clearFilmography();
-  const data = JSON.parse(localStorage.getItem('queueList'));
+  const data = JSON.parse(localStorage.getItem('queueList')) || [];
+
   if (!data.length) {
     createMarkupLibrary();
     return;
@@ -129,7 +128,7 @@ function shouQueueHeader() {
   queueBtn.classList.add('btn-is-active');
 }
 
-function createMarkupLibrary() {
+export function createMarkupLibrary() {
   const markup = `<div class="library">
       <h3 class="sorry_text">Sorry, you haven't added anything here yet</h3>
       <img class="sorry_img" src="./${smile}" alt="smile">

@@ -6,6 +6,8 @@ import refs from './references';
 import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
 import onPlayTrailerModal from './trailer';
+import { printFilmography } from './gallery';
+import { createMarkupLibrary } from './header';
 
 import {
   searchIdInBaze,
@@ -108,6 +110,7 @@ function onOpenModal(event) {
 
   async function changeWatchedTotal() {
     const obj = JSON.parse(localStorage.getItem('currentFilm'));
+
     let arrFilmsToWatch = JSON.parse(localStorage.getItem('watchedList')) || [];
 
     const searchId = obj.id;
@@ -137,9 +140,9 @@ function onOpenModal(event) {
   }
 
   function changeWatchedLocal(arrFilmsToWatch, obj) {
-    btnToWatched.classList.remove('btn-is-active');
+    btnToWatched.classList.toggle('btn-is-active');
 
-    console.log(arrFilmsToWatch);
+    // console.log(arrFilmsToWatch);
     if (arrFilmsToWatch.find(e => e.id === obj.id)) {
       remuveFromWatched(arrFilmsToWatch, obj);
     } else {
@@ -151,12 +154,17 @@ function onOpenModal(event) {
     arrFilmsToWatch.push(obj);
     btnToWatched.textContent = 'Remove from Watched';
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
+    // printFilmography(arrFilmsToWatch);
   }
 
   function remuveFromWatched(arrFilmsToWatch, obj) {
     arrFilmsToWatch = arrFilmsToWatch.filter(movie => movie.id !== obj.id);
     btnToWatched.textContent = 'add to Watched';
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
+    // printFilmography(arrFilmsToWatch);
+    // if (arrFilmsToWatch.length === 0) {
+    //   createMarkupLibrary();
+    // }
   }
 
   function addToQueue() {
