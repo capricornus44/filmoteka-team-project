@@ -33,15 +33,14 @@ refs.gallery.addEventListener('click', onPlayTrailer);
 
 function onPlayTrailer(event) {
   event.preventDefault();
-  if (event.target === event.currentTarget) {
+  if (event.target.className !== 'watch-trailer-btn') {
     return;
   }
 
   const movieId = event.target.closest('li').dataset.id;
 
-  if (event.target.className === 'watch-trailer-btn') {
-    fetchTrailerFilm(movieId);
-  }
+  fetchTrailerFilm(movieId);
+
   return;
 }
 
