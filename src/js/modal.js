@@ -7,7 +7,6 @@ import * as basicLightbox from 'basiclightbox';
 import 'basicLightbox/dist/basicLightbox.min.css';
 
 import {
-  searchIdInBaze,
   setNewFilmIntoBaze,
   remuveWatched,
   currentlyUser,
@@ -25,15 +24,14 @@ function onOpenModal(event) {
   if (
     event.target === event.currentTarget ||
     event.target.className === 'watch-trailer-btn'
-  ) {
+  )
     return;
-  }
 
   const movieId = event.target.closest('li').dataset.id;
 
-  const dataLocalWatched = JSON.parse(localStorage.getItem('watchedList'));
+  let dataLocalWatched = [];
 
-  const dataLocalQueue = JSON.parse(localStorage.getItem('queueList'));
+  let dataLocalQueue = [];
 
   let data = event.target.parentNode.parentNode;
 
@@ -59,31 +57,99 @@ function onOpenModal(event) {
     btnToQueue = document.querySelector('#queue_modal');
 
     btnToWatched.addEventListener('click', changeWatchedTotal);
-    btnToQueue.addEventListener('click', addToQueue);
+    btnToQueue.addEventListener('click', changeQueueTotal);
 
+    // обновление классов при открытии
     if (currentlyUser.id) {
-      const moviesWatched = currentlyUser.watchedListBaze;
-      console.log('moviesWatched', moviesWatched);
+      console.log('идем в модалку зарегистрированного юзера');
 
-      moviesWatched.forEach(movie => {
-        if (movie.id === movieId) {
-          btnToWatched.textContent = 'Remove from Watched';
-          // btnToWatched.classList.add('btn-is-active');
-          return false;
-        }
-      });
-
-      const moviesQueue = currentlyUser.queueListBaze;
-      console.log('moviesQueue', moviesQueue);
-
-      moviesQueue.forEach(movie => {
-        if (movie.id === movieId) {
-          btnToWatched.textContent = 'Remove from Watched';
-          // btnToWatched.classList.add('btn-is-active');
-          return false;
-        }
-      });
+      openModalRegisterUser();
     } else {
+      console.log('идем в модалку просто юзера');
+      openModalWithoutUser();
+    }
+
+    async function changeWatchedTotal() {
+      btnToWatched.classList.toggle('btn-is-active');
+
+      const obj = JSON.parse(localStorage.getItem('currentFilm'));
+      let arrFilmsToWatch =
+        JSON.parse(localStorage.getItem('watchedList')) || [];
+
+      console.log(arrFilmsToWatch);
+
+      const searchId = obj.id;
+
+      if (currentlyUser.id) {
+        if (currentlyUser.watchedListBase.find(e => e.id === obj.id)) {
+          remuveFromWatchedInBaze(searchId);
+          if (arrFilmsToWatch.find(e => e.id === obj.id))
+            remuveFromWatched(arrFilmsToWatch, obj);
+        } else {
+          addToWatchedInBase(obj);
+          if (!arrFilmsToWatch.find(e => e.id === obj.id))
+            addToWatched(arrFilmsToWatch, obj);
+        }
+      } else {
+        console.log('нет');
+        changeWatchedLocal(arrFilmsToWatch, obj);
+      }
+    }
+
+    async function changeQueueTotal() {
+      btnToQueue.classList.toggle('btn-is-active');
+
+      const obj = JSON.parse(localStorage.getItem('currentFilm'));
+      let arrFilmsToQueue = (dataLocalQueue = JSON.parse(
+        localStorage.getItem('queueList'),
+      ));
+      JSON.parse(localStorage.getItem('queueList')) || [];
+
+      const searchId = obj.id;
+      console.log('111111111111111');
+      if (currentlyUser.id) {
+        if (currentlyUser.queueListBaze.find(e => e.id === obj.id)) {
+          remuveFromQueueInBaze(searchId);
+
+          if (arrFilmsToQueue.find(e => e.id === obj.id))
+            remuveFromQueue(arrFilmsToQueue, obj);
+        } else {
+          addToQueueInBase(obj);
+          if (!arrFilmsToQueue.find(e => e.id === obj.id))
+            addToQueue(arrFilmsToQueue, obj);
+        }
+      } else {
+        console.log('нет');
+        changeQueueLocal(arrFilmsToQueue, obj);
+      }
+    }
+
+    // закрытие fetchMovieById
+  });
+
+  ////////
+  /////////
+  ////////
+  // вспомогательные фунции
+
+  function openModalRegisterUser() {
+    if (currentlyUser.watchedListBase.find(e => e.id === movieId)) {
+      btnToWatched.textContent = 'Remove from Watched';
+      btnToWatched.classList.add('btn-is-active');
+    }
+
+    if (currentlyUser.queueListBaze.find(e => e.id === movieId)) {
+      btnToQueue.textContent = 'Remove from Watched';
+      btnToQueue.classList.add('btn-is-active');
+    }
+  }
+
+  function openModalWithoutUser() {
+    dataLocalWatched = JSON.parse(localStorage.getItem('watchedList'));
+
+    dataLocalQueue = JSON.parse(localStorage.getItem('queueList'));
+
+    if (dataLocalWatched) {
       dataLocalWatched.forEach(movie => {
         if (movie.id === movieId) {
           btnToWatched.textContent = 'Remove from Watched';
@@ -91,53 +157,37 @@ function onOpenModal(event) {
           return false;
         }
       });
-
+    }
+    if (dataLocalQueue) {
       dataLocalQueue.forEach(movie => {
         if (movie.id === movieId) {
-          btnToQueue.textContent = 'remove from queue';
+          btnToQueue.textContent = 'Remove from Queue';
           btnToQueue.classList.add('btn-is-active');
           return false;
         }
       });
     }
-  });
+  }
 
-  document.body.setAttribute('style', 'overflow:hidden');
+  //вспомогательная логика на Watched
 
-  async function changeWatchedTotal() {
-    const obj = JSON.parse(localStorage.getItem('currentFilm'));
-    let arrFilmsToWatch = JSON.parse(localStorage.getItem('watchedList')) || [];
+  function addToWatchedInBase(obj) {
+    btnToWatched.textContent = 'Remove from Watched';
+    currentlyUser.watchedListBase.push(obj);
+    setNewFilmIntoBaze(obj, 'watchedList');
+  }
 
-    const searchId = obj.id;
-    if (currentlyUser.id) {
-      console.log('юзер есть ');
-
-      if (await searchIdInBaze(searchId, 'watchedList')) {
-        console.log('фильм есть в базе');
-        btnToWatched.textContent = 'add to Watched';
-        remuveWatched(searchId, 'watchedList');
-        if (arrFilmsToWatch.find(e => e.id === obj.id))
-          remuveFromWatched(arrFilmsToWatch, obj);
-      } else {
-        console.log('фильма в базе нет');
-        btnToWatched.textContent = 'Remove from Watched';
-        await setNewFilmIntoBaze(obj, 'watchedList');
-        if (!arrFilmsToWatch.find(e => e.id === obj.id))
-          addToWatched(arrFilmsToWatch, obj);
-      }
-
-      // const qqq = await searchIdInBaze(searchId);
-      // console.log(qqq);
-    } else {
-      console.log('нет');
-      changeWatchedLocal(arrFilmsToWatch, obj);
-    }
+  async function remuveFromWatchedInBaze(searchId) {
+    btnToWatched.textContent = 'Add to Watched';
+    await remuveWatched(searchId, 'watchedList');
+    const i = currentlyUser.watchedListBase.filter(
+      movie => movie.id !== searchId,
+    );
+    currentlyUser.watchedListBase = i;
   }
 
   function changeWatchedLocal(arrFilmsToWatch, obj) {
-    btnToWatched.classList.remove('btn-is-active');
-
-    console.log(arrFilmsToWatch);
+    if (!arrFilmsToWatch) arrFilmsToWatch = [];
     if (arrFilmsToWatch.find(e => e.id === obj.id)) {
       remuveFromWatched(arrFilmsToWatch, obj);
     } else {
@@ -153,25 +203,64 @@ function onOpenModal(event) {
 
   function remuveFromWatched(arrFilmsToWatch, obj) {
     arrFilmsToWatch = arrFilmsToWatch.filter(movie => movie.id !== obj.id);
-    btnToWatched.textContent = 'add to Watched';
+    btnToWatched.textContent = 'Add to Watched';
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
   }
 
-  function addToQueue() {
-    btnToQueue.textContent = 'remove from queue';
-    btnToQueue.classList.toggle('btn-is-active');
-    let arrFilmsToQueue = JSON.parse(localStorage.getItem('queueList')) || [];
-    const obj = JSON.parse(localStorage.getItem('currentFilm'));
+  //вспомогательные функции на queue
+
+  function addToQueueInBase(obj) {
+    btnToQueue.textContent = 'Remove from Queue';
+    currentlyUser.queueListBaze.push(obj);
+    setNewFilmIntoBaze(obj, 'queueList');
+  }
+
+  async function remuveFromQueueInBaze(searchId) {
+    btnToQueue.textContent = 'Add to Queue';
+    await remuveQueue(searchId, 'queueList');
+    currentlyUser.queueListBaze = currentlyUser.queueListBaze.filter(
+      movie => movie.id !== searchId,
+    );
+  }
+
+  function changeQueueLocal(arrFilmsToQueue, obj) {
+    if (!arrFilmsToQueue) arrFilmsToQueue = [];
     if (arrFilmsToQueue.find(e => e.id === obj.id)) {
-      arrFilmsToQueue = arrFilmsToQueue.filter(movie => movie.id !== obj.id);
-      btnToQueue.textContent = 'add to queue';
+      remuveFromQueue(arrFilmsToQueue, obj);
     } else {
-      arrFilmsToQueue.push(obj);
+      addToQueue(arrFilmsToQueue, obj);
     }
+  }
+
+  function addToQueue(arrFilmsToQueue, obj) {
+    arrFilmsToQueue.push(obj);
+    btnToQueue.textContent = 'Remove from Queue';
     localStorage.setItem('queueList', JSON.stringify(arrFilmsToQueue));
   }
 
-  // function addToWatched() {
-  //   btnToWatched.textContent = 'Remove from Watched';
-  //   btnToWatched.classList.toggle('btn-is-active');
+  function remuveFromQueue(arrFilmsToQueue, obj) {
+    arrFilmsToQueue = arrFilmsToQueue.filter(movie => movie.id !== obj.id);
+    btnToQueue.textContent = 'add to queue';
+    localStorage.setItem('queueList', JSON.stringify(arrFilmsToQueue));
+  }
+
+  // закрытие глобальной функции
 }
+
+// function addToQueue() {
+//   btnToQueue.textContent = 'remove from queue';
+//   btnToQueue.classList.toggle('btn-is-active');
+//   let arrFilmsToQueue = JSON.parse(localStorage.getItem('queueList')) || [];
+//   const obj = JSON.parse(localStorage.getItem('currentFilm'));
+//   if (arrFilmsToQueue.find(e => e.id === obj.id)) {
+//     arrFilmsToQueue = arrFilmsToQueue.filter(movie => movie.id !== obj.id);
+//     btnToQueue.textContent = 'add to queue';
+//   } else {
+//     arrFilmsToQueue.push(obj);
+//   }
+//   localStorage.setItem('queueList', JSON.stringify(arrFilmsToQueue));
+// }
+
+// function addToWatched() {
+//   btnToWatched.textContent = 'Remove from Watched';
+//   btnToWatched.classList.toggle('btn-is-active');

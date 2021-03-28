@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
+import { welcomeUser } from '../js/header';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBsgb2jMkgc32CtcYWAjYcYW_WmPc0eXBs',
@@ -17,10 +18,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 //Текущий юзер
-export let currentlyUser = {
-  ID: '',
+export const currentlyUser = {
+  id: '',
   name: 'незнакомец',
-  watchedListBaze: [],
+  watchedListBase: [],
   queueListBaze: [],
 };
 
@@ -30,18 +31,19 @@ export const signupWithEmailAndPassword = async (email, password, name) => {
     const user = await firebase
       .auth()
       .createUserWithEmailAndPassword(email, password);
-    currentlyUser.id = await firebase.auth().currentUser.uid;
-    console.log('Создан юзер с ID ', currentlyUserID);
-    await firebase.database().ref(`/users/${currentlyUser.id}/info`).set({
-      name,
-    });
-
-    localStorage.setItem('currentlyUser', currentlyUser.id);
 
     return user;
   } catch (error) {
     console.log('это эрор', error);
   }
+
+  currentlyUser.id = await firebase.auth().currentUser.uid;
+  console.log('Создан юзер с ID ', currentlyUserID);
+
+  localStorage.setItem('currentlyUser', currentlyUser.id);
+  await firebase.database().ref(`/users/${currentlyUser.id}/info`).set({
+    name,
+  });
 };
 
 // вход юзера
@@ -51,15 +53,29 @@ export const signinWithEmailAndPassword = async (email, password) => {
       .auth()
       .signInWithEmailAndPassword(email, password);
     currentlyUser.id = await firebase.auth().currentUser.uid;
+
     console.log('В систему зашел юзер с ID ', currentlyUser.id);
+
     localStorage.setItem('currentlyUser', currentlyUser.id);
+
+    try {
+      currentlyUser.watchedListBase = await getWatched();
+    } catch (err) {
+      currentlyUser.watchedListBase = [];
+    }
+    try {
+      currentlyUser.queueListBaze = await getQueue();
+    } catch (err) {
+      currentlyUser.queueListBaze = [];
+    }
+    currentlyUser.name = await getName();
+
+    welcomeUser(currentlyUser.name);
 
     return user;
   } catch (error) {
     console.log('это эррор юзера нет', error);
   }
-  // currentlyUser.watchedListBaze = await getWatched();
-  // currentlyUser.queueListBaze = await getQueue();
 };
 
 // выход юзера
@@ -70,6 +86,7 @@ export const signOut = async () => {
   console.log('вышел юзер с ID ', currentlyUser.id);
   localStorage.setItem('currentlyUser', '');
   currentlyUser.id = '';
+  return;
 };
 
 // получение имени юзера
@@ -81,7 +98,7 @@ export const getName = async () => {
       .ref(`/users/${currentlyUser.id}/info`)
       .once('value')
   ).val();
-  console.log(name);
+
   return name;
 };
 
@@ -101,7 +118,7 @@ export const setNewFilmIntoBaze = async (data, address) => {
 // получение списка фильмов из базы
 export const getWatched = async () => {
   currentlyUser.id = await firebase.auth().currentUser.uid;
-
+  let filmList = [];
   const watched = await (
     await firebase
       .database()
@@ -109,16 +126,16 @@ export const getWatched = async () => {
       .once('value')
   ).val();
 
-  Object.values(watched).forEach(q => {
-    currentlyUser.watchedListBaze.push(...Object.values(q));
+  const i = Object.values(watched).forEach(q => {
+    filmList.push(...Object.values(q));
   });
 
-  return currentlyUser.watchedListBaze;
+  return filmList;
 };
 
 export const getQueue = async () => {
   currentlyUser.id = await firebase.auth().currentUser.uid;
-
+  let filmList = [];
   const queue = await (
     await firebase
       .database()
@@ -127,39 +144,71 @@ export const getQueue = async () => {
   ).val();
 
   Object.values(queue).forEach(q => {
-    currentlyUser.queueListBaze.push(...Object.values(q));
+    filmList.push(...Object.values(q));
   });
 
-  return currentlyUser.queueListBaze;
+  return filmList;
 };
 
 // поиск фильма в базе
-export const searchIdInBaze = async (searchId, address) => {
-  console.log(searchId);
+export const searchIdInBazeWatchedList = async (searchId, address) => {
   currentlyUser.id = await firebase.auth().currentUser.uid;
+
   const watched = await (
     await firebase
       .database()
       .ref(`/users/${currentlyUser.id}/watchedList`)
       .once('value')
   ).val();
-  console.log(watched);
+
   const index = Object.values(watched).findIndex(
     item => item.data.id === searchId,
   );
 
   const indexInBaze = Object.keys(watched)[index];
   console.log(indexInBaze);
-  console.log(Boolean(indexInBaze));
+  return indexInBaze;
+};
+
+export const searchIdInBazeQueueList = async (searchId, address) => {
+  currentlyUser.id = await firebase.auth().currentUser.uid;
+  const watched = await (
+    await firebase
+      .database()
+      .ref(`/users/${currentlyUser.id}/queueList`)
+      .once('value')
+  ).val();
+
+  const index = Object.values(watched).findIndex(
+    item => item.data.id === searchId,
+  );
+
+  const indexInBaze = Object.keys(watched)[index];
+  console.log(indexInBaze);
   return indexInBaze;
 };
 
 // удаление фильма из базы данных
 export const remuveWatched = async (searchId, address) => {
   currentlyUser.id = await firebase.auth().currentUser.uid;
+  let deletedIndex = '';
 
-  const deletedIndex = await searchIdInBaze(searchId);
-  //удаление фильма
+  deletedIndex = await searchIdInBazeWatchedList(searchId, address);
+
+  await firebase
+    .database()
+    .ref(`/users/${currentlyUser.id}/${address}`)
+    .child(deletedIndex)
+    .remove();
+  console.log(deletedIndex, 'удален');
+};
+
+export const remuveQueue = async (searchId, address) => {
+  currentlyUser.id = await firebase.auth().currentUser.uid;
+  let deletedIndex = '';
+
+  deletedIndex = await searchIdInBazeQueueList(searchId, address);
+
   await firebase
     .database()
     .ref(`/users/${currentlyUser.id}/${address}`)

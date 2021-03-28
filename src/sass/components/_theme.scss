@@ -46,7 +46,7 @@
   background: linear-gradient($background-theme-dark, $bg-theme-dark-footer);
 
   .btn-box-get-out .auth-send {
-    color: $header-text-color;
+    // color: $header-text-color;
   }
 
   .input-box-registr .input-registr {
@@ -58,9 +58,9 @@
     }
   }
 
-  .registr-box .auth-get {
-    color: $header-text-color;
-  }
+  // .registr-box .auth-get {
+  //   color: $header-text-color;
+  // }
 }
 
 .dark-theme {

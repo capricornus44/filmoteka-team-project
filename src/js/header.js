@@ -15,7 +15,7 @@ import {
 
 import { currentlyUser } from '../firebase/auth';
 
-import { getWatched } from '../firebase/auth';
+import { getWatched, getQueue } from '../firebase/auth';
 
 loadStartPage({ headerInfo, logo });
 
@@ -31,12 +31,13 @@ const homeBtn = document.querySelector('#home');
 const myLibraryBtn = document.querySelector('#my-library');
 const myLibraryNav = document.querySelector('#lbr-buttons');
 const watchedBtn = document.querySelector('#watched');
+const queueBtn = document.querySelector('#queue');
 
 // ----
 
 const searchForm = document.querySelector('.header-search-form');
 const searchBlock = document.querySelector('#header-search-form');
-const queueBtn = document.querySelector('#queue');
+
 // const searchBtn = document.querySelector('#search');
 
 // ++++
@@ -44,11 +45,11 @@ headerLogo.addEventListener('click', openHome);
 homeBtn.addEventListener('click', openHome);
 myLibraryBtn.addEventListener('click', openLibraryWatched);
 watchedBtn.addEventListener('click', openWatchedFilms);
+queueBtn.addEventListener('click', openQueueFilms);
 searchForm.addEventListener('submit', onSearch);
 
 // ----
 
-queueBtn.addEventListener('click', openQueueFilms);
 // searchBtn.addEventListener('click', openSearchForm);
 
 function openHome() {
@@ -66,32 +67,54 @@ function openLibraryWatched() {
 async function openWatchedFilms() {
   clearFilmography();
   shouWatchedHeader();
+  console.log('это каррент юзер ', currentlyUser.id);
+
   let filmList = [];
+
   if (currentlyUser.id) {
-    filmList = await getWatched(); //получение данных из базы
+    filmList = currentlyUser.watchedListBase;
+    // filmList = await getWatched(); //получение данных из базы
+
+    console.log('отаботал юзер');
+    console.log(filmList);
   } else {
     filmList = JSON.parse(localStorage.getItem('watchedList'));
+    console.log('отаботал не юзер');
   }
-
-  printFilmography(filmList);
-
-  if (!filmList.length) {
+  console.log('это список фильмов', Boolean(filmList));
+  if (!filmList || !filmList.length) {
     createMarkupLibrary();
     return;
   }
+  printFilmography(filmList);
+
   pagination.reset(filmList.length);
 }
 
-function openQueueFilms() {
-  shouQueueHeader();
+async function openQueueFilms() {
   clearFilmography();
-  const data = JSON.parse(localStorage.getItem('queueList'));
-  if (!data.length) {
+  shouQueueHeader();
+  let filmList = [];
+  console.log('это юзер', currentlyUser.id);
+
+  if (currentlyUser.id) {
+    filmList = currentlyUser.queueListBaze;
+    // filmList = await getQueue(); //получение данных из
+
+    console.log('отаботал юзер');
+  } else {
+    filmList = JSON.parse(localStorage.getItem('queueList'));
+    console.log('отаботал не юзер');
+  }
+
+  console.log('это список фильмов', filmList);
+  if (!filmList || !filmList.length) {
     createMarkupLibrary();
     return;
   }
-  printFilmography(data);
-  pagination.reset(data.length);
+  printFilmography(filmList);
+
+  pagination.reset(filmList.length);
 }
 
 function changeHeaderHome() {
@@ -130,6 +153,12 @@ function createMarkupLibrary() {
       </div>`;
   refs.gallery.insertAdjacentHTML('beforeend', markup);
   // document.querySelector('#pagination').innerHTML = '';
+}
+
+export function welcomeUser(currentlyUser) {
+  document.querySelector(
+    '#user-name',
+  ).textContent = `Добро пожаловать, ${currentlyUser.name}`;
 }
 
 // логика на поиска

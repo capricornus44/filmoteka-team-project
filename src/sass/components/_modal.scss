@@ -154,30 +154,30 @@
   margin-bottom: 20px;
 }
 
-.btn_items {
-  display: flex;
-  justify-content: space-between;
-  @include for-size(desktop) {
-    justify-content: flex-start;
-  }
-}
+// .btn_items {
+//   display: flex;
+//   justify-content: space-between;
+//   @include for-size(desktop) {
+//     justify-content: flex-start;
+//   }
+// }
 
-.btn_items > .btn-base {
-  margin-right: 15px;
-}
+// .btn_items > .btn-base {
+//   margin-right: 15px;
+// }
 
-.btn_items > .btn-base:last-child {
-  margin-right: 0;
-}
+// .btn_items > .btn-base:last-child {
+//   margin-right: 0;
+// }
 
-.btn_items > .btn-base {
-  color: $main-text-color;
-  border: 1px solid $main-text-color;
-  outline: none;
-}
+// .btn_items > .btn-base {
+//   color: $main-text-color;
+//   border: 1px solid $main-text-color;
+//   outline: none;
+// }
 
-.btn_items > .btn-base.btn-is-active {
-  color: $header-text-color;
-  border: none;
-  outline: $accent-color;
-}
+// .btn_items > .btn-base.btn-is-active {
+//   color: $header-text-color;
+//   border: none;
+//   outline: $accent-color;
+// }

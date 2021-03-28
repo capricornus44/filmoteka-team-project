@@ -22,9 +22,16 @@ function onBtn(event) {
     .show();
   document.body.setAttribute('style', 'overflow:hidden');
 
-  document.querySelector('.sign-in').addEventListener('click', getAuthent);
+  document.querySelector('#auch-get').addEventListener('click', goIn);
+  document
+    .querySelector('#auch-open')
+    .addEventListener('click', changeWisibility);
+  document
+    .querySelector('#auch-send')
+    .addEventListener('click', sendRegistrationForm);
+  document.querySelector('#back').addEventListener('click', changeWisibility);
 
-  async function getAuthent(ev) {
+  async function goIn(ev) {
     ev.preventDefault();
 
     const emailData = ev.target.parentNode.email.value;
@@ -32,21 +39,20 @@ function onBtn(event) {
     const user = await signinWithEmailAndPassword(emailData, passwordData);
     ev.target.parentNode.email.value = '';
     ev.target.parentNode.password.value = '';
+    // basicLightbox.onClose(ev => document.body.removeAttribute('style'));
   }
 
-  document.querySelector('#auth-send').addEventListener('click', openName);
-
-  function openName(ev) {
+  function changeWisibility(ev) {
     ev.preventDefault();
-    document.querySelector('#name-imput').classList.remove('is-hidden');
-    document.querySelector('.sign-in').classList.toggle('sign-reg');
-    document.querySelector('.sign-reg').classList.toggle('sign-in');
-    document
-      .querySelector('.sign-reg')
-      .addEventListener('click', sendRegistrationForm);
+    document.querySelector('#name-imput').classList.toggle('is-hidden');
+    document.querySelector('#auch-get').classList.toggle('is-hidden');
+    document.querySelector('#auch-open').classList.toggle('is-hidden');
+    document.querySelector('#auch-send').classList.toggle('is-hidden');
+    document.querySelector('#back').classList.toggle('is-hidden');
   }
 
   async function sendRegistrationForm(ev) {
+    ev.preventDefault();
     const emailData = ev.target.parentNode.email.value;
     const passwordData = ev.target.parentNode.password.value;
     const nameData = ev.target.parentNode.name.value;
