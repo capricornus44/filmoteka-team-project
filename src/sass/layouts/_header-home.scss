@@ -92,12 +92,10 @@ header .container {
   padding-left: 0px;
   padding-right: 0px;
   cursor: pointer;
-
-  &:first-child {
-    margin-right: 39px;
-  }
 }
-
+#my-library {
+  margin-left: 40px;
+}
 .lbr-button-active {
   border-bottom: 3px solid $accent-color;
 }

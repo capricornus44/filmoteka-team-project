@@ -58,8 +58,14 @@ body.dark-theme .auth-nav-registr {
       }
     }
 
-    .auth-get {
+    .btn-mod-header {
       color: $header-text-color;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+        color: $active-btn-color;
+      }
     }
   }
 }
