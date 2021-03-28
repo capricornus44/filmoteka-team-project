@@ -43,6 +43,7 @@
       padding: 0;
       width: 60px;
       color: $main-text-color;
+
       border: none;
 
       &:hover,
@@ -50,6 +51,7 @@
         transform: scale(1.05);
         color: $active-btn-color;
         outline: none;
+
       }
     }
 
@@ -81,7 +83,7 @@
       margin-right: auto;
       margin-left: auto;
       width: 100px;
-      color: $main-text-color;
+      // color: $main-text-color;
       border: none;
       outline: none;
 
