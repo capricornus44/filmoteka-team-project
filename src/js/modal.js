@@ -12,6 +12,7 @@ import { createMarkupLibrary } from './header';
 import {
   setNewFilmIntoBaze,
   remuveWatched,
+  remuveQueue,
   currentlyUser,
 } from '../firebase/auth';
 
@@ -76,15 +77,14 @@ function onOpenModal(event) {
       let arrFilmsToWatch =
         JSON.parse(localStorage.getItem('watchedList')) || [];
 
-      // btnToWatched.classList.toggle('btn-is-active');
-
-      console.log(arrFilmsToWatch);
+      btnToWatched.classList.toggle('btn-is-active');
 
       const searchId = obj.id;
 
       if (currentlyUser.id) {
         if (currentlyUser.watchedListBase.find(e => e.id === obj.id)) {
           remuveFromWatchedInBaze(searchId);
+
           if (arrFilmsToWatch.find(e => e.id === obj.id))
             remuveFromWatched(arrFilmsToWatch, obj);
         } else {
@@ -93,22 +93,19 @@ function onOpenModal(event) {
             addToWatched(arrFilmsToWatch, obj);
         }
       } else {
-        console.log('нет');
         changeWatchedLocal(arrFilmsToWatch, obj);
       }
     }
 
     async function changeQueueTotal() {
+      const obj = JSON.parse(localStorage.getItem('currentFilm'));
+
+      let arrFilmsToQueue = JSON.parse(localStorage.getItem('queueList')) || [];
+
       btnToQueue.classList.toggle('btn-is-active');
 
-      const obj = JSON.parse(localStorage.getItem('currentFilm'));
-      let arrFilmsToQueue = (dataLocalQueue = JSON.parse(
-        localStorage.getItem('queueList'),
-      ));
-      JSON.parse(localStorage.getItem('queueList')) || [];
-
       const searchId = obj.id;
-      console.log('111111111111111');
+
       if (currentlyUser.id) {
         if (currentlyUser.queueListBaze.find(e => e.id === obj.id)) {
           remuveFromQueueInBaze(searchId);
@@ -121,7 +118,6 @@ function onOpenModal(event) {
             addToQueue(arrFilmsToQueue, obj);
         }
       } else {
-        console.log('нет');
         changeQueueLocal(arrFilmsToQueue, obj);
       }
     }
@@ -129,9 +125,6 @@ function onOpenModal(event) {
     // закрытие fetchMovieById
   });
 
-  ////////
-  /////////
-  ////////
   // вспомогательные фунции
 
   function openModalRegisterUser() {
@@ -182,18 +175,13 @@ function onOpenModal(event) {
   async function remuveFromWatchedInBaze(searchId) {
     btnToWatched.textContent = 'Add to Watched';
     await remuveWatched(searchId, 'watchedList');
-    const i = currentlyUser.watchedListBase.filter(
+    currentlyUser.watchedListBase = currentlyUser.watchedListBase.filter(
       movie => movie.id !== searchId,
     );
-    currentlyUser.watchedListBase = i;
   }
 
   function changeWatchedLocal(arrFilmsToWatch, obj) {
     if (!arrFilmsToWatch) arrFilmsToWatch = []; //for what???????
-
-    btnToWatched.classList.toggle('btn-is-active');
-
-    // console.log(arrFilmsToWatch);
 
     if (arrFilmsToWatch.find(e => e.id === obj.id)) {
       remuveFromWatched(arrFilmsToWatch, obj);
@@ -258,21 +246,3 @@ function onOpenModal(event) {
 
   // закрытие глобальной функции
 }
-
-// function addToQueue() {
-//   btnToQueue.textContent = 'remove from queue';
-//   btnToQueue.classList.toggle('btn-is-active');
-//   let arrFilmsToQueue = JSON.parse(localStorage.getItem('queueList')) || [];
-//   const obj = JSON.parse(localStorage.getItem('currentFilm'));
-//   if (arrFilmsToQueue.find(e => e.id === obj.id)) {
-//     arrFilmsToQueue = arrFilmsToQueue.filter(movie => movie.id !== obj.id);
-//     btnToQueue.textContent = 'add to queue';
-//   } else {
-//     arrFilmsToQueue.push(obj);
-//   }
-//   localStorage.setItem('queueList', JSON.stringify(arrFilmsToQueue));
-// }
-
-// function addToWatched() {
-//   btnToWatched.textContent = 'Remove from Watched';
-//   btnToWatched.classList.toggle('btn-is-active');

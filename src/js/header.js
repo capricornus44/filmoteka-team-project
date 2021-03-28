@@ -161,10 +161,12 @@ export function createMarkupLibrary() {
   document.querySelector('#pagination').innerHTML = '';
 }
 
-export function welcomeUser(currentlyUser) {
-  document.querySelector(
-    '#user-name',
-  ).textContent = `Добро пожаловать, ${currentlyUser.name}`;
+export function welcomeUser(name) {
+  document.querySelector('#user-name').textContent = `Welcome ${name}`;
+}
+
+export function qoodbye() {
+  document.querySelector('#user-name').textContent = ``;
 }
 
 // логика на поиска

@@ -20,6 +20,7 @@ function onBtn(event) {
   });
 
   basicLightboxInstance.show();
+
   document.body.setAttribute('style', 'overflow:hidden');
 
   document.querySelector('#auch-get').addEventListener('click', goIn);
@@ -43,7 +44,6 @@ function onBtn(event) {
     // basicLightbox.onClose(ev => document.body.removeAttribute('style'));
 
     basicLightboxInstance.close();
-
   }
 
   function changeWisibility(ev) {
@@ -60,6 +60,11 @@ function onBtn(event) {
     const emailData = ev.target.parentNode.email.value;
     const passwordData = ev.target.parentNode.password.value;
     const nameData = ev.target.parentNode.name.value;
+
+    console.log(ev.target.parentNode.name);
+    console.log(emailData);
+    console.log(passwordData);
+    console.log(nameData);
     console.log('Это регистрация');
 
     const user = await signupWithEmailAndPassword(
