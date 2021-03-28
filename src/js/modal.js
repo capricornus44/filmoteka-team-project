@@ -170,6 +170,12 @@ function onOpenModal(event) {
     btnToWatched.textContent = 'Remove from Watched';
     currentlyUser.watchedListBase.push(obj);
     setNewFilmIntoBaze(obj, 'watchedList');
+    const arrWatchList = currentlyUser.watchedListBase;
+    if (
+      document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
+    ) {
+      printFilmography(arrWatchList);
+    }
   }
 
   async function remuveFromWatchedInBaze(searchId) {
@@ -178,10 +184,19 @@ function onOpenModal(event) {
     currentlyUser.watchedListBase = currentlyUser.watchedListBase.filter(
       movie => movie.id !== searchId,
     );
+    const arrWatchList = currentlyUser.watchedListBase;
+    if (
+      document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
+    ) {
+      printFilmography(arrWatchList);
+      if (arrWatchList.length === 0) {
+        createMarkupLibrary();
+      }
+    }
   }
 
   function changeWatchedLocal(arrFilmsToWatch, obj) {
-    if (!arrFilmsToWatch) arrFilmsToWatch = []; //for what???????
+    if (!arrFilmsToWatch) arrFilmsToWatch = [];
 
     if (arrFilmsToWatch.find(e => e.id === obj.id)) {
       remuveFromWatched(arrFilmsToWatch, obj);
@@ -195,24 +210,40 @@ function onOpenModal(event) {
     btnToWatched.textContent = 'Remove from Watched';
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
     // printFilmography(arrFilmsToWatch);
+    if (
+      document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
+    ) {
+      printFilmography(arrFilmsToWatch);
+    }
   }
 
   function remuveFromWatched(arrFilmsToWatch, obj) {
     arrFilmsToWatch = arrFilmsToWatch.filter(movie => movie.id !== obj.id);
     btnToWatched.textContent = 'Add to Watched';
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
-    // printFilmography(arrFilmsToWatch);
-    // if (arrFilmsToWatch.length === 0) {
-    //   createMarkupLibrary();
-    // }
+    if (
+      document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
+    ) {
+      printFilmography(arrFilmsToWatch);
+      if (arrFilmsToWatch.length === 0) {
+        createMarkupLibrary();
+      }
+    }
   }
 
   //вспомогательные функции на queue
 
   function addToQueueInBase(obj) {
     btnToQueue.textContent = 'Remove from Queue';
+
     currentlyUser.queueListBaze.push(obj);
+    const arrQueueList = currentlyUser.queueListBaze;
     setNewFilmIntoBaze(obj, 'queueList');
+    if (
+      document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
+    ) {
+      printFilmography(arrQueueList);
+    }
   }
 
   async function remuveFromQueueInBaze(searchId) {
@@ -221,6 +252,15 @@ function onOpenModal(event) {
     currentlyUser.queueListBaze = currentlyUser.queueListBaze.filter(
       movie => movie.id !== searchId,
     );
+    const arrQueueList = currentlyUser.queueListBaze;
+    if (
+      document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
+    ) {
+      printFilmography(arrQueueList);
+      if (arrQueueList.length === 0) {
+        createMarkupLibrary();
+      }
+    }
   }
 
   function changeQueueLocal(arrFilmsToQueue, obj) {
@@ -236,12 +276,25 @@ function onOpenModal(event) {
     arrFilmsToQueue.push(obj);
     btnToQueue.textContent = 'Remove from Queue';
     localStorage.setItem('queueList', JSON.stringify(arrFilmsToQueue));
+    if (
+      document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
+    ) {
+      printFilmography(arrFilmsToQueue);
+    }
   }
 
   function remuveFromQueue(arrFilmsToQueue, obj) {
     arrFilmsToQueue = arrFilmsToQueue.filter(movie => movie.id !== obj.id);
     btnToQueue.textContent = 'add to queue';
     localStorage.setItem('queueList', JSON.stringify(arrFilmsToQueue));
+    if (
+      document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
+    ) {
+      printFilmography(arrFilmsToQueue);
+      if (arrFilmsToQueue.length === 0) {
+        createMarkupLibrary();
+      }
+    }
   }
 
   // закрытие глобальной функции
