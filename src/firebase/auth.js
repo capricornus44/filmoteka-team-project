@@ -2,7 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
-import { welcomeUser } from '../js/header';
+import { welcomeUser, qoodbye } from '../js/header';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBsgb2jMkgc32CtcYWAjYcYW_WmPc0eXBs',
@@ -20,30 +20,44 @@ firebase.initializeApp(firebaseConfig);
 //Текущий юзер
 export const currentlyUser = {
   id: '',
-  name: 'незнакомец',
+  name: '',
   watchedListBase: [],
   queueListBaze: [],
 };
 
 // регистрация юзера
 export const signupWithEmailAndPassword = async (email, password, name) => {
-  try {
-    const user = await firebase
-      .auth()
-      .createUserWithEmailAndPassword(email, password);
-
-    return user;
-  } catch (error) {
-    console.log('это эрор', error);
-  }
+  await registration(email, password);
 
   currentlyUser.id = await firebase.auth().currentUser.uid;
-  console.log('Создан юзер с ID ', currentlyUserID);
+  console.log('Создан юзер с ID ', currentlyUser.id);
 
   localStorage.setItem('currentlyUser', currentlyUser.id);
   await firebase.database().ref(`/users/${currentlyUser.id}/info`).set({
     name,
   });
+
+  currentlyUser.name = name;
+  welcomeUser(name);
+  chandeBtnLog();
+};
+
+function chandeBtnLog() {
+  document.querySelector('#buttonModHeader').classList.toggle('is-hidden');
+  document.querySelector('#auth-out').classList.toggle('is-hidden');
+}
+
+const registration = async (email, password) => {
+  try {
+    const user = await firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password);
+
+    console.log(user);
+    return user;
+  } catch (error) {
+    console.log('это эрор', error);
+  }
 };
 
 // вход юзера
@@ -68,9 +82,15 @@ export const signinWithEmailAndPassword = async (email, password) => {
     } catch (err) {
       currentlyUser.queueListBaze = [];
     }
-    currentlyUser.name = await getName();
+
+    try {
+      currentlyUser.name = await getName();
+    } catch (err) {
+      currentlyUser.name = 'person with a secret name';
+    }
 
     welcomeUser(currentlyUser.name);
+    chandeBtnLog();
 
     return user;
   } catch (error) {
@@ -81,12 +101,14 @@ export const signinWithEmailAndPassword = async (email, password) => {
 // выход юзера
 export const signOut = async () => {
   currentlyUser.id = await firebase.auth().currentUser.uid;
+
   await firebase.auth().signOut();
 
   console.log('вышел юзер с ID ', currentlyUser.id);
   localStorage.setItem('currentlyUser', '');
   currentlyUser.id = '';
-  return;
+  qoodbye();
+  chandeBtnLog();
 };
 
 // получение имени юзера
@@ -172,6 +194,7 @@ export const searchIdInBazeWatchedList = async (searchId, address) => {
 
 export const searchIdInBazeQueueList = async (searchId, address) => {
   currentlyUser.id = await firebase.auth().currentUser.uid;
+
   const watched = await (
     await firebase
       .database()
