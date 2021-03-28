@@ -84,7 +84,7 @@ async function openWatchedFilms() {
     console.log('отаботал юзер');
     console.log(filmList);
   } else {
-    filmList = JSON.parse(localStorage.getItem('watchedList')) || []; //ghbkjhhfkjshfkjhdskjfhjkhk
+    filmList = JSON.parse(localStorage.getItem('watchedList')) || [];
     console.log('отаботал не юзер');
   }
   console.log('это список фильмов', Boolean(filmList));
