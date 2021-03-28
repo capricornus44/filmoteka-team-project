@@ -176,8 +176,20 @@
   outline: none;
 }
 
+.btn_items > .btn-base:hover {
+  outline: none;
+  border: 1px solid $accent-color;
+  color: $header-text-color;
+  background-color: $active-btn-color;
+}
+
 .btn_items > .btn-base.btn-is-active {
   color: $header-text-color;
   border: none;
   outline: $accent-color;
+}
+
+.btn_items > .btn-base.btn-is-active:hover {
+  // color: $main-text-color;
+  border: 1px solid $main-text-color;
 }
