@@ -37,7 +37,7 @@ const queueBtn = document.querySelector('#queue');
 
 const searchForm = document.querySelector('.header-search-form');
 const searchBlock = document.querySelector('#header-search-form');
-const queueBtn = document.querySelector('#queue');
+// const queueBtn = document.querySelector('#queue');
 export const errorRequest = document.querySelector('#requst-error'); //message error request
 const input = document.querySelector('.header-search-form-input');
 // const searchBtn = document.querySelector('#search');

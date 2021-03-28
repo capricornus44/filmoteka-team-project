@@ -74,12 +74,12 @@ function onOpenModal(event) {
     }
 
     async function changeWatchedTotal() {
-    const obj = JSON.parse(localStorage.getItem('currentFilm'));
+      const obj = JSON.parse(localStorage.getItem('currentFilm'));
 
-    let arrFilmsToWatch = JSON.parse(localStorage.getItem('watchedList')) || []; 
-    
-    
-      btnToWatched.classList.toggle('btn-is-active');
+      let arrFilmsToWatch =
+        JSON.parse(localStorage.getItem('watchedList')) || [];
+
+      // btnToWatched.classList.toggle('btn-is-active');
 
       console.log(arrFilmsToWatch);
 
@@ -174,7 +174,6 @@ function onOpenModal(event) {
     }
   }
 
-
   //вспомогательная логика на Watched
 
   function addToWatchedInBase(obj) {
@@ -193,7 +192,6 @@ function onOpenModal(event) {
   }
 
   function changeWatchedLocal(arrFilmsToWatch, obj) {
-
     if (!arrFilmsToWatch) arrFilmsToWatch = []; //for what???????
 
     btnToWatched.classList.toggle('btn-is-active');
