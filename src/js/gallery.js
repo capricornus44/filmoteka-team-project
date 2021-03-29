@@ -19,6 +19,7 @@ export async function onSearch(event) {
   apiService.resetPage();
 
   if (apiService.query === '' || apiService.query.trim().length === 0) {
+    fetchFilmography();
     errorRequest.classList.remove('is-hidden');
     document.querySelector('#pagination').innerHTML = ''; // hidden pagination completely
     // pagination.reset(1); //show one page instead of total ones
