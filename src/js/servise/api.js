@@ -1,7 +1,7 @@
 export const API_KEY = '989c90c59500ad26e3fa4e26d53d2bd3';
 export const BASE_URL = 'https://api.themoviedb.org/3';
 const IMG_PATH = 'https://image.tmdb.org/t/p/w500/';
-export let language = 'en';
+
 export let GENRES = [];
 
 export default class ApiService {
@@ -16,11 +16,11 @@ export default class ApiService {
     this.searchMovies = `${BASE_URL}/search/movie`;
     this.trendMovies = `${BASE_URL}/trending/movie/day`;
     this.genres = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
-    this.lenguage = 'ru';
+    this._lang = '';
   }
 
   async fetchGenre() {
-    this.url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${language}`;
+    this.url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=${this._lang}`;
     const response = await fetch(this.url);
     const data = await response.json();
 
@@ -29,9 +29,9 @@ export default class ApiService {
 
   async fetch(searchQuery) {
     if (searchQuery && searchQuery !== '') {
-      this.url = `${this.searchMovies}?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}`;
+      this.url = `${this.searchMovies}?api_key=${API_KEY}&query=${this.searchQuery}&page=${this.page}&language=${this._lang}`;
     } else {
-      this.url = `${this.trendMovies}?api_key=${API_KEY}&page=${this.page}`;
+      this.url = `${this.trendMovies}?api_key=${API_KEY}&page=${this.page}&language=${this._lang}`;
     }
 
     try {
@@ -71,7 +71,7 @@ export default class ApiService {
   }
 
   async fetchMovieById(movieId) {
-    this.url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos`; // Получаем объект movie
+    this.url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos&language=${this._lang}`; // Получаем объект movie
 
     try {
       const response = await fetch(this.url);
@@ -109,6 +109,14 @@ export default class ApiService {
 
   get pageCount() {
     return this.totalPages;
+  }
+
+  get lang() {
+    return this._lang;
+  }
+
+  set lang(newLang) {
+    this._lang = newLang;
   }
 
   resetPage() {

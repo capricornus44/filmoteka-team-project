@@ -1,7 +1,7 @@
 .scroll-up {
   position: fixed;
   display: none;
-  bottom: 190px;
+  bottom: 195px;
   right: 20px;
   z-index: 30;
   width: 50px;
@@ -17,12 +17,13 @@
   cursor: pointer;
 
   @include for-size(tablet) {
-    bottom: 180px;
     right: 15px;
+    bottom: 132px;
   }
 
   @include for-size(desktop) {
     right: 40px;
+    bottom: 200px;
   }
 }
 

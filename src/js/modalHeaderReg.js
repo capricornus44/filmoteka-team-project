@@ -41,8 +41,6 @@ function onBtn(event) {
     ev.target.parentNode.email.value = '';
     ev.target.parentNode.password.value = '';
 
-    // basicLightbox.onClose(ev => document.body.removeAttribute('style'));
-
     basicLightboxInstance.close();
   }
 
@@ -61,11 +59,11 @@ function onBtn(event) {
     const passwordData = ev.target.parentNode.password.value;
     const nameData = ev.target.parentNode.name.value;
 
-    console.log(ev.target.parentNode.name);
-    console.log(emailData);
-    console.log(passwordData);
-    console.log(nameData);
-    console.log('Это регистрация');
+    // console.log(ev.target.parentNode.name);
+    // console.log(emailData);
+    // console.log(passwordData);
+    // console.log(nameData);
+    // console.log('Это регистрация');
 
     const user = await signupWithEmailAndPassword(
       emailData,

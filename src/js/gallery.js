@@ -13,14 +13,16 @@ export async function onSearch(event) {
   event.preventDefault();
   const form = event.currentTarget;
   apiService.query = form.elements.query.value;
-  // form.elements.query.value = '';
 
   clearFilmography();
 
   apiService.resetPage();
 
   if (apiService.query === '' || apiService.query.trim().length === 0) {
+    fetchFilmography();
     errorRequest.classList.remove('is-hidden');
+    document.querySelector('#pagination').innerHTML = ''; // hidden pagination completely
+    // pagination.reset(1); //show one page instead of total ones
     return;
   }
 
@@ -34,6 +36,7 @@ export async function fetchFilmography() {
 
   if (movies.results.length === 0) {
     errorRequest.classList.remove('is-hidden');
+    document.querySelector('#pagination').innerHTML = ''; // hidden pagination completely
     return;
   }
 }

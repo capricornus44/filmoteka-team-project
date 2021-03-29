@@ -81,8 +81,9 @@ body.light-theme {
 
 .toggle {
   position: absolute;
-  top: 5px;
-  right: 20px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 200%;
 }
 .toggle:before {
