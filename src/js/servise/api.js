@@ -79,6 +79,7 @@ export default class ApiService {
 
       this.url = '';
       movie.trailerKey = movie.videos.results[0].key;
+
       //todo
 
       return movie;
