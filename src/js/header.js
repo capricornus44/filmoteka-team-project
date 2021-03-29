@@ -68,7 +68,7 @@ function openLibraryWatched() {
 async function openWatchedFilms() {
   clearFilmography();
   shouWatchedHeader();
-  console.log('это каррент юзер ', currentlyUser.id);
+  // console.log('это каррент юзер ', currentlyUser.id);
 
   let filmList = [];
 
