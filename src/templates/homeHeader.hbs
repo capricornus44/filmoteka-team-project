@@ -1,0 +1,46 @@
+<div class="btn-header-aut">
+    <button type="button" id="buttonModHeader" class="lbr-button btn-modal-registr">log in</button>
+    <button type="submit" id="auth-out" class="lbr-button is-hidden">log out</button>
+    <span class="toggle theme-switcher"></span>
+</div>
+
+<div class="header-nav">
+    <div id='header-logo' class='header-logo'>
+        <svg class="header-logo-icon">
+            <use href="{{this}}#film"></use>
+        </svg>
+        <h1 class="header-logo-name">Filmoteka</h1>
+    </div>
+
+    {{!-- <div class="btn-header-aut">
+        <button type="button" id="buttonModHeader" class="lbr-button btn-modal-registr">log in</button>
+        <button type="submit" id="auth-out" class="lbr-button is-hidden">log out</button>
+    </div> --}}
+
+    <div class="header-nav-form">
+        <button id='home' class='lbr-button lbr-button-active'>Home</button>
+        <button id='my-library' class='lbr-button'>my library</button>
+        <p id='user-name' class='welcome'></p>
+
+    </div>
+
+</div>
+
+
+<div class="header-search-block">
+    <div id="header-search-form">
+        <form class="header-search-form" action="">
+            <input class='header-search-form-input' type="text" placeholder="Searching" name="query" />
+            <svg class="search-icon">
+                <use href="{{this}}#search-2"></use>
+            </svg>
+        </form>
+        <p class="errorRequest is-hidden" id="requst-error">Search result not successful. Enter the correct movie name
+            and repeat</p>
+    </div>
+
+    <div id='lbr-buttons' class='is-hidden'>
+        <button id='watched' class='btn-base'>Watched</button>
+        <button id='queue' class='btn-base'>queue</button>
+    </div>
+</div>

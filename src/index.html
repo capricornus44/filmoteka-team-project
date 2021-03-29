@@ -4,12 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Webpack Starter Kit</title>
+    <title>Kinoman</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <article class="intro">
-      <h1>Filmoteka</h1>
-    </article>
+    <header class="header-start">
+      <div class="container"></div>
+      <!-- <span class="toggle theme-switcher"></span> -->
+      <!-- <div class="lang-switcher visually-hidden">
+        <input
+          class="checkbox"
+          type="checkbox"
+          name="lang-switcher"
+          value="lang"
+          id="check"
+        />
+        <label for="check" class="checkbox-label"></label>
+      </div> -->
+    </header>
+    <!-- dynamic content template -->
+    <main>
+      <section class="section-main">
+        <div class="container" id="content-js"></div>
+        <div class="tui-pagination" id="pagination"></div>
+      </section>
+    </main>
+    <footer class="page-footer">
+      <!-- dynamic footer template -->
+    </footer>
+
+    <!-- ScrollUp -->
+    <a id="scroll-up" class="scroll-up" title="top"></a>
   </body>
 </html>

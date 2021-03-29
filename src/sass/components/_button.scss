@@ -1,0 +1,28 @@
+.btn-base {
+  width: 136px;
+  height: 44px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: transparent;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: $header-text-color;
+  text-transform: uppercase;
+  cursor: pointer;
+  transform: scale(1);
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.05);
+  }
+}
+
+.btn-is-active {
+  outline: none;
+  border: 1px solid $accent-color;
+  background-color: $active-btn-color;
+}

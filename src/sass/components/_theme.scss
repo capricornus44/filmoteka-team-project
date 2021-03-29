@@ -1,0 +1,91 @@
+body.light-theme .list-galery {
+  .card-title {
+    color: $main-text-color;
+  }
+}
+body.dark-theme .list-galery {
+  .card-title {
+    color: $header-text-color;
+  }
+}
+body.dark-theme .footer-text {
+  color: $header-text-color;
+  background-color: $bg-theme-dark-footer;
+}
+
+body.dark-theme .modal {
+  background-color: $background-theme-dark;
+  color: $header-text-color;
+
+  .vote_count {
+    background-color: $background-theme-dark;
+    color: $header-text-color;
+  }
+
+  .btn_items > .btn-base {
+    color: $header-text-color;
+    border: 1px solid $header-text-color;
+  }
+  .btn_items > .btn-base:hover,
+  .btn_items > .btn-base:focus {
+    border: none;
+  }
+}
+body.dark-theme .tui-pagination .tui-page-btn {
+  color: $header-text-color !important;
+}
+body.dark-theme .tui-pagination .tui-page-btn:hover {
+  color: $main-text-color !important;
+}
+
+body.dark-theme .sorry_text {
+  color: $header-text-color;
+}
+
+body.dark-theme .auth-nav-registr {
+  background: linear-gradient($background-theme-dark, $bg-theme-dark-footer);
+
+  .form-reg {
+    .auth-send {
+      color: $header-text-color;
+    }
+    .input-registr {
+      color: $header-text-color;
+      border-bottom: 0.5px solid $header-text-color;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+
+    .btn-mod-header {
+      color: $header-text-color;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+        color: $active-btn-color;
+      }
+    }
+  }
+}
+
+body.dark-theme {
+  background-color: $background-theme-dark;
+  transition: 300ms;
+}
+body.light-theme {
+  background-color: $header-text-color;
+  transition: 300ms;
+}
+
+.toggle {
+  margin-left: 75px;
+  font-size: 200%;
+}
+.toggle:before {
+  content: '☀️';
+}
+.toggle.active:before {
+  content: '🌒';
+}

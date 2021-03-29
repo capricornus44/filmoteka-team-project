@@ -1,0 +1,36 @@
+.scroll-up {
+  position: fixed;
+  display: none;
+  bottom: 195px;
+  right: 20px;
+  z-index: 30;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 1px 8px 3px rgba(165, 165, 165, 0.6);
+  line-height: 30px;
+  background: #ff6b08;
+  background-image: url(../images/chevron-up.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px;
+  cursor: pointer;
+
+  @include for-size(tablet) {
+    right: 15px;
+    bottom: 132px;
+  }
+
+  @include for-size(desktop) {
+    right: 40px;
+    bottom: 200px;
+  }
+}
+
+.scroll-up:hover {
+  opacity: 0.7;
+}
+
+.scroll-up-show {
+  display: block;
+}

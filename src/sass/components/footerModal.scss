@@ -1,0 +1,161 @@
+.footer-modal {
+  overflow: auto;
+  width: 320px;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -40px;
+  margin-top: -40px;
+
+  @include for-size(tablet) {
+    width: 768px;
+  }
+  @include for-size(desktop) {
+    width: 1024px;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.student-link {
+  display: block;
+}
+
+.student {
+  overflow: hidden;
+  position: relative;
+  height: 40vh;
+  margin-left: 40px;
+  margin-top: 40px;
+  flex-basis: calc(100% / 1 - 50px);
+  border-radius: 5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include for-size(tablet) {
+    flex-basis: calc(100% / 2 - 50px);
+  }
+
+  @include for-size(desktop) {
+    flex-basis: calc(100% / 3 - 50px);
+  }
+  &:hover,
+  &:focus {
+    box-shadow: 0px -3px 18px 0px $color-text-modal;
+    transition: 300ms;
+    transform: scale(1.05);
+  }
+}
+
+.student-img1 {
+  background-image: url(/images/antonzavalnuk.jpg);
+}
+
+.student-img2 {
+  background-image: url(/images/aleksandrkasyan.png);
+}
+
+.student-img3 {
+  background-image: url(/images/tetyanaredka.png);
+}
+
+.student-img4 {
+  background-image: url(/images/denisdanielyan.jpg);
+}
+
+.student-img5 {
+  background-image: url(/images/paveldenisov.jpg);
+}
+
+.student-img6 {
+  background-image: url(/images/ulantemirbekov.png);
+}
+
+.student-float {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $background-footer-color;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  padding: 63px 25px;
+  opacity: 0;
+  background-color: rgba(140, 140, 140, 0.6);
+  transition: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(100%);
+
+  .student:hover &,
+  .student:focus & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.student-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.student:hover::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: transparent;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  opacity: 0.8;
+}
+
+.student-name {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 2.222;
+  margin-top: 24px;
+}
+
+.student-work {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.social-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 0;
+}
+
+.social-list-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-list-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.social-list-svg {
+  width: 18px;
+  height: 18px;
+  fill: $background-footer-color;
+  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  .social-list-link:hover &,
+  .social-list-link:focus & {
+    fill: $accent-color;
+  }
+}

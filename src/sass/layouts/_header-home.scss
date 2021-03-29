@@ -1,0 +1,165 @@
+.header-start {
+  height: 230px;
+
+  background-color: rgba(0, 0, 0, 0.56);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/bcg-mob.jpg);
+  background-size: cover;
+  background-position: center center;
+
+  @include for-size(tablet) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/bcg-tablet.jpg);
+  }
+
+  @include for-size(desktop) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/bcg-desktop.jpg);
+  }
+}
+
+.header-lbr {
+  height: 230px;
+
+  background-color: rgba(0, 0, 0, 0.56);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(../images/bcg-lbr-mob.jpg);
+  background-size: cover;
+  background-position: center center;
+
+  @include for-size(tablet) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/bcg-lbr-tablet.jpg);
+  }
+
+  @include for-size(desktop) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(../images/bcg-lbr-desktop.jpg);
+  }
+}
+
+header .container {
+  max-height: 230px;
+  height: 100%;
+  padding-top: 10px;
+
+  // padding-top: 46px;
+  @include for-size(tablet) {
+    // padding-top: 41px;
+  }
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 41px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header-logo-icon {
+  height: 24px;
+  width: 24px;
+  margin-right: 10px;
+}
+.header-logo-name {
+  display: none;
+
+  @include for-size(tablet) {
+    display: block;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.17;
+    color: $header-text-color;
+  }
+}
+
+.header-nav-form {
+  position: relative;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: $header-text-color;
+}
+
+.lbr-button {
+  border-style: none;
+  background: transparent;
+  outline: none;
+  text-transform: uppercase;
+  color: $header-text-color;
+  padding-left: 0px;
+  padding-right: 0px;
+  cursor: pointer;
+}
+
+#my-library {
+  margin-left: 40px;
+}
+
+.lbr-button-active {
+  border-bottom: 3px solid $accent-color;
+}
+
+.header-search-block {
+  text-align: center;
+}
+
+.header-search-form {
+  display: flex;
+  justify-content: space-between;
+  width: 280px;
+  margin: 0 auto;
+  padding: 4px;
+  border-bottom: 0.5px solid #ffffff;
+
+  @include for-size(tablet) {
+    width: 336px;
+  }
+}
+
+.header-search-form-input {
+  border-style: none;
+  background: transparent;
+  outline: none;
+  width: calc(100% - 20px);
+  color: $header-text-color;
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 1.14;
+    color: $header-text-color;
+  }
+}
+
+.search-icon {
+  height: 12px;
+  width: 12px;
+}
+
+.header-lbr-buttons {
+  width: 287px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.errorRequest {
+  margin-top: 10px;
+  color: $err-text-color;
+}
+
+.welcome {
+  position: absolute;
+  top: 30px;
+  right: 0;
+}

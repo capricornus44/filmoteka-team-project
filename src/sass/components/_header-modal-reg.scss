@@ -1,0 +1,92 @@
+.btn-header-aut {
+  // position: absolute;
+  // top: 20px;
+  // right: 50px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.auth-nav-registr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85vw;
+  min-height: 30vh;
+
+  background: linear-gradient($header-text-color, $color-text-modal);
+
+  @include for-size(mobile) {
+    max-width: 350px;
+  }
+
+  .form-reg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+
+    .auth-send {
+      margin-left: auto;
+      padding: 0;
+      width: 60px;
+      color: $main-text-color;
+
+      border: none;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+        color: $active-btn-color;
+        outline: none;
+      }
+    }
+
+    .input-registr {
+      padding: 5px;
+      width: 100%;
+
+      border-top: none;
+      border-right: none;
+      border-left: none;
+      border-bottom: 1px solid $main-text-color;
+      background: transparent;
+
+      &:invalid:not(:placeholder-shown) {
+        border-color: #ff0000;
+      }
+      &:valid:not(:placeholder-shown) {
+        border-color: #008000;
+      }
+
+      &::placeholder {
+        color: rgba($color: #000000, $alpha: 0.5);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+    .input-registr:not(:first-child) {
+      margin-top: 20px;
+    }
+
+    .btn-mod-header {
+      margin-top: 0;
+      margin-right: auto;
+      margin-left: auto;
+      width: 100px;
+      color: $main-text-color;
+      border: none;
+      outline: none;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.05);
+        color: $active-btn-color;
+      }
+    }
+  }
+}

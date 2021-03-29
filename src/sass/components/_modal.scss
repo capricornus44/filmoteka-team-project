@@ -1,0 +1,188 @@
+.modal {
+  max-width: 280px;
+  overflow: scroll;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  background-color: $header-text-color;
+
+  @include for-size(tablet) {
+    display: flex;
+    justify-content: space-between;
+    max-width: 618px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    overflow: auto;
+  }
+
+  @include for-size(desktop) {
+    max-width: 882px;
+  }
+}
+
+.modal_poster {
+  @include for-size(tablet) {
+    margin-right: 32px;
+  }
+
+  @include for-size(desktop) {
+    margin-right: 30px;
+  }
+}
+
+.modal_img {
+  border-radius: 5px;
+  margin-bottom: 30px;
+  max-width: 240px;
+
+  @include for-size(tablet) {
+    max-width: 264px;
+    max-height: 373px;
+
+    margin-bottom: 0px;
+  }
+
+  @include for-size(desktop) {
+    max-width: 396px;
+    max-height: 480px;
+  }
+}
+
+.title_modal {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+
+  .watch-trailer-btn-modal {
+    display: inline-block;
+    vertical-align: middle;
+    width: 36px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+    margin-left: 10px;
+    border: none;
+    background-color: transparent;
+    background-image: url(../images/youtube-icon.svg);
+    background-repeat: no-repeat;
+    background-position: cover;
+    background-size: 36px;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  @include for-size(desktop) {
+    font-size: 30px;
+    line-height: 1.16;
+  }
+}
+
+.modal_list_item {
+  display: flex;
+
+  margin-bottom: 10px;
+}
+
+.modal_item_title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: $color-text-modal;
+
+  display: inline-block;
+  width: 80px;
+  margin-right: 20px;
+  @include for-size(desktop) {
+    margin-right: 85px;
+  }
+}
+
+.item_data {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+}
+
+.vote_averege {
+  width: 36px;
+  height: 16px;
+  background: $accent-color;
+  border-radius: 5px;
+  color: $header-text-color;
+  text-align: center;
+  padding: 1px;
+  margin-right: 3px;
+}
+
+.vote_count {
+  width: 36px;
+  height: 16px;
+
+  background: $background-footer-color;
+  border-radius: 5px;
+  text-align: center;
+  padding: 1px;
+  margin-left: 3px;
+}
+
+.about_title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.overview {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  margin-bottom: 20px;
+}
+
+.btn_items {
+  display: flex;
+  justify-content: space-between;
+  @include for-size(desktop) {
+    justify-content: flex-start;
+  }
+}
+
+.btn_items > .btn-base {
+  margin-right: 15px;
+}
+
+.btn_items > .btn-base:last-child {
+  margin-right: 0;
+}
+
+.btn_items > .btn-base {
+  color: $main-text-color;
+  border: 1px solid $main-text-color;
+  outline: none;
+}
+
+.btn_items > .btn-base:hover {
+  outline: none;
+  border: 1px solid $accent-color;
+  color: $header-text-color;
+  background-color: $active-btn-color;
+}
+
+.btn_items > .btn-base.btn-is-active {
+  color: $header-text-color;
+  border: none;
+  outline: $accent-color;
+}
+
+.btn_items > .btn-base.btn-is-active:hover {
+  border: 1px solid $main-text-color;
+}

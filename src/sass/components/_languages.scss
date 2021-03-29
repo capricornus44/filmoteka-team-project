@@ -1,0 +1,41 @@
+.lang-switcher {
+  position: absolute;
+  top: 8px;
+  right: 70px;
+  width: auto;
+  height: auto;
+}
+
+.checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.checkbox-label:before {
+  display: inline-block;
+  content: '';
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  background-image: url('../images/uk.png');
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+}
+
+.checkbox:checked + .checkbox-label:before {
+  background-image: url('../images/ru.png');
+  background-size: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+}
