@@ -80,10 +80,7 @@ body.light-theme {
 }
 
 .toggle {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-left: 75px;
   font-size: 200%;
 }
 .toggle:before {
