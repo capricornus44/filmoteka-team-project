@@ -1,7 +1,10 @@
 .btn-header-aut {
-  position: absolute;
-  top: 20px;
-  right: 50px;
+  // position: absolute;
+  // top: 20px;
+  // right: 50px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .auth-nav-registr {
