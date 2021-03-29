@@ -1,4 +1,6 @@
 .header-start {
+  height: 230px;
+
   background-color: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/bcg-mob.jpg);
@@ -17,6 +19,8 @@
 }
 
 .header-lbr {
+  height: 230px;
+
   background-color: rgba(0, 0, 0, 0.56);
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/bcg-lbr-mob.jpg);
@@ -35,10 +39,13 @@
 }
 
 header .container {
-  height: 230px;
-  padding-top: 46px;
+  max-height: 230px;
+  height: 100%;
+  padding-top: 10px;
+
+  // padding-top: 46px;
   @include for-size(tablet) {
-    padding-top: 41px;
+    // padding-top: 41px;
   }
 }
 
@@ -94,9 +101,11 @@ header .container {
   padding-right: 0px;
   cursor: pointer;
 }
+
 #my-library {
   margin-left: 40px;
 }
+
 .lbr-button-active {
   border-bottom: 3px solid $accent-color;
 }
@@ -104,6 +113,7 @@ header .container {
 .header-search-block {
   text-align: center;
 }
+
 .header-search-form {
   display: flex;
   justify-content: space-between;
@@ -135,6 +145,7 @@ header .container {
   height: 12px;
   width: 12px;
 }
+
 .header-lbr-buttons {
   width: 287px;
   margin: 0 auto;

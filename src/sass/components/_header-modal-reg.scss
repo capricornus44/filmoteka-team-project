@@ -1,12 +1,16 @@
 .btn-header-aut {
-  position: absolute;
-  top: 20px;
-  right: 50px;
+  // position: absolute;
+  // top: 20px;
+  // right: 50px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
 .auth-nav-registr {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 85vw;
   min-height: 30vh;
 
@@ -47,8 +51,15 @@
       border-top: none;
       border-right: none;
       border-left: none;
-      border-bottom: 0.5px solid $main-text-color;
+      border-bottom: 1px solid $main-text-color;
       background: transparent;
+
+      &:invalid:not(:placeholder-shown) {
+        border-color: #ff0000;
+      }
+      &:valid:not(:placeholder-shown) {
+        border-color: #008000;
+      }
 
       &::placeholder {
         color: rgba($color: #000000, $alpha: 0.5);

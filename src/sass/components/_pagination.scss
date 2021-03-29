@@ -10,11 +10,6 @@
     width: 480px;
   }
 
-  // @include for-size(tablet) {
-  //   margin-bottom: 60px;
-  //   margin-top: 50px;
-  // }
-
   @include for-size(tablet-only) {
     width: 768px;
     padding-left: 75px;
@@ -23,7 +18,6 @@
 
   @include for-size(desktop) {
     width: 1200px;
-    // margin-top: 46px;
   }
 
   color: #000000;

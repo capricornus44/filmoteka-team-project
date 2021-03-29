@@ -26,7 +26,6 @@ function onOpenModal(event) {
   if (event.target.className !== 'card-picture') return;
 
   const movieId = event.target.closest('li').dataset.id;
-  console.log(movieId);
 
   let dataLocalWatched = [];
 
@@ -63,11 +62,11 @@ function onOpenModal(event) {
 
     // обновление классов при открытии
     if (currentlyUser.id) {
-      console.log('идем в модалку зарегистрированного юзера');
+      // console.log('идем в модалку зарегистрированного юзера');
 
       openModalRegisterUser();
     } else {
-      console.log('идем в модалку просто юзера');
+      // console.log('идем в модалку просто юзера');
       openModalWithoutUser();
     }
 
@@ -121,12 +120,9 @@ function onOpenModal(event) {
         changeQueueLocal(arrFilmsToQueue, obj);
       }
     }
-
-    // закрытие fetchMovieById
   });
 
-  // вспомогательные фунции
-
+  // Additional functions
   function openModalRegisterUser() {
     if (currentlyUser.watchedListBase.find(e => e.id === movieId)) {
       btnToWatched.textContent = 'Remove from Watched';
@@ -153,6 +149,7 @@ function onOpenModal(event) {
         }
       });
     }
+
     if (dataLocalQueue) {
       dataLocalQueue.forEach(movie => {
         if (movie.id === movieId) {
@@ -164,8 +161,7 @@ function onOpenModal(event) {
     }
   }
 
-  //вспомогательная логика на Watched
-
+  //Additional logic for <Add to Watched>
   function addToWatchedInBase(obj) {
     btnToWatched.textContent = 'Remove from Watched';
     currentlyUser.watchedListBase.push(obj);
@@ -209,7 +205,7 @@ function onOpenModal(event) {
     arrFilmsToWatch.push(obj);
     btnToWatched.textContent = 'Remove from Watched';
     localStorage.setItem('watchedList', JSON.stringify(arrFilmsToWatch));
-    // printFilmography(arrFilmsToWatch);
+
     if (
       document.querySelector('.lbr-button-active').getAttribute('id') !== 'home'
     ) {
@@ -231,7 +227,7 @@ function onOpenModal(event) {
     }
   }
 
-  //вспомогательные функции на queue
+  // Addtional functions for <Add to Queue>
 
   function addToQueueInBase(obj) {
     btnToQueue.textContent = 'Remove from Queue';
@@ -296,6 +292,4 @@ function onOpenModal(event) {
       }
     }
   }
-
-  // закрытие глобальной функции
 }

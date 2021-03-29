@@ -45,7 +45,6 @@ function onPlayTrailer(event) {
 }
 
 export default function onPlayTrailerModal(event) {
-  console.log(event.currentTarget);
   const trailerKey = event.currentTarget.dataset.key;
   const trailer = basicLightbox
     .create(

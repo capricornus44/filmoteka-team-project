@@ -1,6 +1,11 @@
 <div class="modal">
   <div class="modal_poster">
+    {{#if poster_path}}
     <img class="modal_img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" />
+    {{else}}
+    <img src='https://www.prokerala.com/movies/assets/img/no-poster-available.jpg' alt="image" class="modal_img" />
+    {{/if}}
+    {{!-- <img class="modal_img" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{original_title}}" /> --}}
   </div>
   <div class="iner">
     <div class="modal_desc">
