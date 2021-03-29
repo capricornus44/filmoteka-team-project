@@ -2,7 +2,7 @@ import cardMurkup from '../templates/filmGallery.hbs';
 import { apiService, genres } from './servise/api';
 import refs from './references';
 import pagination from './pagination';
-import { errorRequest } from './header';
+import { errorRequest, createMarkupLibrary } from './header';
 
 export default async function startPage() {
   await apiService.fetchGenre();
@@ -36,7 +36,8 @@ export async function fetchFilmography() {
 
   if (movies.results.length === 0) {
     errorRequest.classList.remove('is-hidden');
-    document.querySelector('#pagination').innerHTML = ''; // hidden pagination completely
+    createMarkupLibrary();
+
     return;
   }
 }
