@@ -156,7 +156,9 @@ export function createMarkupLibrary() {
 }
 
 export function welcomeUser(name) {
-  document.querySelector('#user-name').textContent = `Welcome ${name}`;
+  if (!name)
+    document.querySelector('#user-name').textContent = `Welcome ${name}`;
+  document.querySelector('#user-name').textContent = `Welcome guest`;
 }
 
 export function qoodbye() {
